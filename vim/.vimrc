@@ -1,0 +1,13 @@
+set ts=4
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+set nu
+set rnu
+call plug#begin()
+Plug 'preservim/tagbar'
+Plug 'preservim/NERDTree'
+Plug 'jiangmiao/auto-pairs'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
