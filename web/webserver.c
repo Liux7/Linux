@@ -20,7 +20,8 @@
 #define FORBIDDEN 403
 #define NOTFOUND	404
 #ifndef SIGCLD
-#	define SIGCLD SIGCHLD #endif
+    #define SIGCLD SIGCHLD 
+#endif
 
 struct { char *ext;
 char *filetype;
@@ -117,7 +118,7 @@ void web(int fd, int hit)
     logger(LOG,"SEND",&buffer[5],hit);
     len = (long)lseek(file_fd, (off_t)0, SEEK_END); /* lseek to the file end to find the length */ 
     (void)lseek(file_fd, (off_t)0, SEEK_SET); /* lseek back to the file start ready for reading */
-    (void)sprintf(buffer,"HTTP/1.1 200 OK\nServer: nweb/%d.0\nContent-Length: %ld\nConnection:
+    (void)sprintf(buffer,"HTTP/1.1 200 OK\nServer: nweb/%d.0\nContent-Length: %ld\nConnection: \
     close\nContent-Type: %s\n\n", VERSION, len, fstr); /* Header + a blank line */ 
         logger(LOG,"Header",buffer,hit);
     (void)write(fd,buffer,strlen(buffer));
