@@ -42,7 +42,7 @@ void logger(int type, char *s1, char *s2, int socket_fd)
 {
     int fd ;
     char logbuffer[BUFSIZE*2];
-
+	
     switch (type) {
         case ERROR: (void)sprintf(logbuffer,"ERROR: %s:%s Errno=%d exiting pid=%d",s1, s2, errno,getpid()); break;
         case FORBIDDEN:
@@ -53,6 +53,8 @@ void logger(int type, char *s1, char *s2, int socket_fd)
         (void)sprintf(logbuffer,"NOT FOUND: %s:%s",s1, s2); break;
         case LOG: (void)sprintf(logbuffer," INFO: %s:%s:%d",s1, s2,socket_fd); break;
     }
+
+	(void)sprintf(logbuffer,"================");
  
     /* No checks here, nothing can be done with a failure anyway */
     if((fd = open("webserver.log", O_CREAT| O_WRONLY | O_APPEND,0644)) >= 0) { (void)write(fd,logbuffer,strlen(logbuffer));
