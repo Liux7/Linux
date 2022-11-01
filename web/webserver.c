@@ -40,6 +40,7 @@ char *filetype;
 {"html","text/html" },
 {0,0} };
 
+
 void logger(int type, char *s1, char *s2, int socket_fd)
 {
     int fd ;
@@ -67,7 +68,7 @@ void logger(int type, char *s1, char *s2, int socket_fd)
 	Now = localtime(&timer);
 
 	int fp = open("webserver.log",O_WRONLY | O_APPEND);
-	(void)sprintf(timebuff, "[%s]", asctime(Now));
+	(void)sprintf(timebuff, "[%s", asctime(Now));
 
 	(void)write(fp, timebuff, strlen(timebuff));
 	(void)close(fp);
@@ -201,6 +202,12 @@ int main(int argc, char **argv)
         logger(ERROR,"system call","listen",0);
 
     for(hit=1; ;hit++) {
+		char buff[50];	
+		int fp = open("test.log",O_WRONLY | O_APPEND);
+		(void)sprintf(buff, "[%d]", hit);
+
+		(void)write(fp, buff, strlen(buff));
+		(void)close(fp);
         length = sizeof(cli_addr);
         if((socketfd = accept(listenfd, (struct sockaddr *)&cli_addr, &length)) < 0) logger(ERROR,"system call","accept",0);
         web(socketfd,hit); /* never returns */
