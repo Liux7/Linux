@@ -43,6 +43,7 @@ char *filetype;
 
 void logger(int type, char *s1, char *s2, int socket_fd)
 {
+
     int fd ;
     char logbuffer[BUFSIZE*2];
 
@@ -80,6 +81,7 @@ void logger(int type, char *s1, char *s2, int socket_fd)
 	    (void)write(fd,"\n",1); 
 		(void)close(fd);
     }
+
 }
 
 /* this is a child web server process, so we can exit on errors */ 
@@ -156,6 +158,7 @@ void web(int fd, int hit)
 
 int main(int argc, char **argv)
 {
+
     int i, port, listenfd, socketfd, hit; socklen_t length;
     static struct sockaddr_in cli_addr; /* static = initialised to zeros */ static struct sockaddr_in serv_addr; /* static = initialised to zeros */
 
@@ -201,6 +204,7 @@ int main(int argc, char **argv)
     if( listen(listenfd,64) <0) 
         logger(ERROR,"system call","listen",0);
 
+		
     for(hit=1; ;hit++) {
 		char buff[50];	
 		int fp = open("test.log",O_WRONLY | O_APPEND);
@@ -209,7 +213,37 @@ int main(int argc, char **argv)
 		(void)write(fp, buff, strlen(buff));
 		(void)close(fp);
         length = sizeof(cli_addr);
-        if((socketfd = accept(listenfd, (struct sockaddr *)&cli_addr, &length)) < 0) logger(ERROR,"system call","accept",0);
-        web(socketfd,hit); /* never returns */
-    }
+
+		double webtime = 0.0;
+		struct timeval t1, t2, t3, t4;
+		
+		double loggertime = 0.0;
+		gettimeofday(&t1, NULL);
+        if((socketfd = accept(listenfd, (struct sockaddr *)&cli_addr, &length)) < 0)
+		{
+			
+			logger(ERROR,"system call","accept",0);
+		}
+		gettimeofday(&t2, NULL);
+
+		loggertime += (t2.tv_sec - t1.tv_sec)*1000 + (t2.tv_usec - t1.tv_usec);
+
+			gettimeofday(&t3, NULL);
+			web(socketfd,hit); /* never returns */
+			gettimeofday(&t4, NULL);
+		
+		char timebuff[60];
+		time_t timer;
+		struct tm *Now;
+		time(&timer);
+		Now = localtime(&timer);
+		webtime = (t4.tv_sec - t3.tv_sec) * 1000 + (t4.tv_usec - t3.tv_usec) / 1000;
+	
+		int fp2 = open("time.log",O_WRONLY | O_APPEND);
+		(void)sprintf(timebuff, "logger:%lf web:%lf\n", loggertime, webtime);
+	
+		(void)write(fp2, timebuff, strlen(timebuff));
+		(void)close(fp2);
+		
+	}
 }
