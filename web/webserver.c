@@ -7,11 +7,13 @@
 #include <errno.h> 
 #include <string.h> 
 #include <fcntl.h> 
+#include <time.h>
 #include <signal.h> 
 #include <sys/types.h> 
 #include <sys/socket.h> 
 #include <netinet/in.h> 
 #include <arpa/inet.h> 
+#include <sys/time.h>
 
 #define VERSION 23
 #define BUFSIZE 8096
@@ -42,6 +44,7 @@ void logger(int type, char *s1, char *s2, int socket_fd)
 {
     int fd ;
     char logbuffer[BUFSIZE*2];
+
 	
     switch (type) {
         case ERROR: (void)sprintf(logbuffer,"ERROR: %s:%s Errno=%d exiting pid=%d",s1, s2, errno,getpid()); break;
@@ -51,14 +54,30 @@ void logger(int type, char *s1, char *s2, int socket_fd)
         case NOTFOUND:
         (void)write(socket_fd, "HTTP/1.1 404 Not Found\nContent-Length: 136\nConnection: close\nContent-Type:	text/html\n\n<html><head>\n<title>404	Not Found</title>\n</head><body>\n<h1>Not Found</h1>\nThe requested URL was not found on this server.\n</body></html>\n",224);
         (void)sprintf(logbuffer,"NOT FOUND: %s:%s",s1, s2); break;
-        case LOG: (void)sprintf(logbuffer," INFO: %s:%s:%d",s1, s2,socket_fd); break;
+        case LOG: 
+			(void)sprintf(logbuffer,"INFO: %s:%s:%d",s1, s2,socket_fd); 
+			break;
     }
 
-	(void)sprintf(logbuffer,"================");
- 
+	/*=================================*/
+	char timebuff[60];
+	time_t timer;
+	struct tm *Now;
+	time(&timer);
+	Now = localtime(&timer);
+
+	int fp = open("webserver.log",O_WRONLY | O_APPEND);
+	(void)sprintf(timebuff, "[%s]", asctime(Now));
+
+	(void)write(fp, timebuff, strlen(timebuff));
+	(void)close(fp);
+	/*===================================*/
+
     /* No checks here, nothing can be done with a failure anyway */
-    if((fd = open("webserver.log", O_CREAT| O_WRONLY | O_APPEND,0644)) >= 0) { (void)write(fd,logbuffer,strlen(logbuffer));
-    (void)write(fd,"\n",1); (void)close(fd);
+    if((fd = open("webserver.log", O_CREAT| O_WRONLY | O_APPEND,0644)) >= 0) { 
+		(void)write(fd,logbuffer,strlen(logbuffer));
+	    (void)write(fd,"\n",1); 
+		(void)close(fd);
     }
 }
 
