@@ -81,7 +81,7 @@ void logger(int type, char *s1, char *s2, int socket_fd)
 	    (void)write(fd,"\n",1); 
 		(void)close(fd);
     }
-
+    if(type == ERROR || type == NOTFOUND || type == FORBIDDEN) exit(3);
 }
 
 /* this is a child web server process, so we can exit on errors */ 
