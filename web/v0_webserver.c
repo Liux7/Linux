@@ -179,6 +179,8 @@ int main(int argc, char **argv)
     if(chdir(argv[2]) == -1){
     (void)printf("ERROR: Can't Change to directory %s\n",argv[2]); exit(4);
     }
+
+	//printf("======helop=====\n");
     /* Become deamon + unstopable and no zombies children (= no wait()) */ 
     if(fork() != 0)
         return 0; /* parent returns OK to shell */ 
