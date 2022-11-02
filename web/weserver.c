@@ -4,6 +4,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <unistd.h> 
+#include <semaphore.h>
 #include <errno.h> 
 #include <string.h> 
 #include <fcntl.h> 
@@ -24,6 +25,11 @@
 #ifndef SIGCLD
     #define SIGCLD SIGCHLD 
 #endif
+
+#define SEM_NAME "sem_example" 
+#define SHM_NAME "mmap_example"
+
+void * memPtr;
 
 struct { char *ext;
 char *filetype;
@@ -213,6 +219,36 @@ int main(int argc, char **argv)
     if( listen(listenfd,64) <0) 
         logger(ERROR,"system call","listen",0);
 	
+    sem_t* psem;
+    //创建信号量,初始信号量为 1
+    if((psem=sem_open(SEM_NAME, O_CREAT,0666, 1))==SEM_FAILED)
+    {
+        perror("create semaphore error"); 
+        exit(1);
+    }
+
+    int shm_fd;
+    //创建共享内存对象
+    if((shm_fd=shm_open(SHM_NAME,O_RDWR| O_CREAT,0666)) < 0){ 
+        perror("create shared memory object error");
+        exit(1);
+    }
+
+    /* 配 置 共 享 内 存 段 大 小 */ 
+    ftruncate(shm_fd, sizeof(double));
+    //将共享内存对象映射到进程
+    memPtr = mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+
+    if(memPtr==MAP_FAILED)
+    {
+         perror("create mmap error"); 
+        exit(1);
+    }
+
+    //为此内存区域赋值
+    * (double *) memPtr= 0.0;
+
+    struct timeval t1, t2;
 		
     for(hit=1; ;hit++) {
 	    if((socketfd = accept(listenfd, (struct sockaddr *)&cli_addr, &length)) < 0)
@@ -225,8 +261,24 @@ int main(int argc, char **argv)
 		
 		  if(pid == 0) {   /* child */
     	    (void)close(listenfd);
+
+            gettimeofday(&t1, NULL);
     	    web(socketfd,hit); /* never returns */
-    	  } else {   /* parent */
+            gettimeofday(&t2, NULL);
+
+            double ptime =  (t2.tv_sec - t1.tv_sec)*1000 + (t2.tv_usec - t1.tv_usec);
+            * (double *) memPtr += ptime;
+
+            /*=================================*/
+            char buff[60];
+            int fp2 = open("time.log",O_WRONLY | O_APPEND);
+            (void)sprintf(buff, "ptime%lf totaltime:%lf", ptime, * (double *)memPtr);
+            (void)write(fp2, buff, strlen(buff));
+            (void)close(fp2);
+            /*===================================*/
+
+    	  } 
+          else {   /* parent */
     	    (void)close(socketfd);
     	  }
 	  	  
