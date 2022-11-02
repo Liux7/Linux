@@ -15,6 +15,7 @@
 #include <netinet/in.h> 
 #include <arpa/inet.h> 
 #include <sys/time.h>
+#include <sys/mman.h>
 
 #define VERSION 23
 #define BUFSIZE 8096
@@ -161,7 +162,7 @@ void web(int fd, int hit)
     }
     sleep(1); /* allow socket to drain before signalling the socket is closed */ 
     close(fd);
-    exit(1);
+   // exit(1);
 }
 
 int main(int argc, char **argv)
@@ -267,19 +268,29 @@ int main(int argc, char **argv)
             gettimeofday(&t2, NULL);
 
             double ptime =  (t2.tv_sec - t1.tv_sec)*1000 + (t2.tv_usec - t1.tv_usec);
+			sem_wait(psem);
             * (double *) memPtr += ptime;
-
             /*=================================*/
             char buff[60];
-            int fp2 = open("time.log",O_WRONLY | O_APPEND);
-            (void)sprintf(buff, "ptime%lf totaltime:%lf", ptime, * (double *)memPtr);
+            int fp2 = open("/home/liux7/Desktop/Linux/web/Web/time.txt",O_CREAT| O_WRONLY | O_APPEND,0644);
+            (void)sprintf(buff, "ptime%lf totaltime:%lf\n", ptime, * (double *)memPtr);
             (void)write(fp2, buff, strlen(buff));
             (void)close(fp2);
             /*===================================*/
 
+			sem_post(psem);
+
+			exit(1);
     	  } 
           else {   /* parent */
     	    (void)close(socketfd);
+            /*=================================
+            char buff[60];
+            int fp2 = open("/home/liux7/Desktop/Linux/web/Web/time.txt",O_CREAT| O_WRONLY | O_APPEND,0644);
+            (void)sprintf(buff, "ptime totaltime:%lf\n",  * (double *)memPtr);
+            (void)write(fp2, buff, strlen(buff));
+            (void)close(fp2);
+            ===================================*/
     	  }
 	  	  
 	
