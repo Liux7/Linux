@@ -100,7 +100,8 @@ void web(int fd, int hit)
         buffer[0]=0;
     for(i=0;i<ret;i++) /* remove CF and LF characters */ 
         if(buffer[i] == '\r' || buffer[i] == '\n')
-            buffer[i]='*'; logger(LOG,"request",buffer,hit);
+            buffer[i]='*'; 
+    logger(LOG,"request",buffer,hit);
     if( strncmp(buffer,"GET ",4) && strncmp(buffer,"get ",4) ) 
     { 
         logger(FORBIDDEN,"Only simple GET operation supported",buffer,fd);
@@ -141,8 +142,8 @@ void web(int fd, int hit)
     }
     logger(LOG,"SEND",&buffer[5],hit);
     len = (long)lseek(file_fd, (off_t)0, SEEK_END); /* lseek to the file end to find the length */ 
-    (void)lseek(file_fd, (off_t)0, SEEK_SET); /* lseek back to the file start ready for reading */
-    (void)sprintf(buffer,"HTTP/1.1 200 OK\nServer: nweb/%d.0\nContent-Length: %ld\nConnection: \
+        (void)lseek(file_fd, (off_t)0, SEEK_SET); /* lseek back to the file start ready for reading */
+        (void)sprintf(buffer,"HTTP/1.1 200 OK\nServer: nweb/%d.0\nContent-Length: %ld\nConnection: \
     close\nContent-Type: %s\n\n", VERSION, len, fstr); /* Header + a blank line */ 
         logger(LOG,"Header",buffer,hit);
     (void)write(fd,buffer,strlen(buffer));
@@ -154,6 +155,7 @@ void web(int fd, int hit)
     }
     sleep(1); /* allow socket to drain before signalling the socket is closed */ 
     close(fd);
+    exit(1);
 }
 
 int main(int argc, char **argv)
