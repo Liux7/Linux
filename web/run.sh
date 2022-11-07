@@ -1,2 +1,2 @@
 #!/bin/sh
-./server 8088 ./Web
+./bin/server 8088 ./Web
