@@ -12,12 +12,12 @@
 
 /* IP address and port number */
 
-#define PORT	8181	
+#define PORT	8088
 // Port number as an integer - web server default is 80 
-#define IP_ADDRESS "192.168.0.8"	
+#define IP_ADDRESS "127.0.0.1"	
 //IP Address as a string
 /* Request a html file base on HTTP */
-char *httprequestMsg = "GET /helloworld.html HTTP/1.0 \r\n\r\n" ;
+char *httprequestMsg = "GET /index.html HTTP/1.0 \r\n\r\n" ;
 #define BUFSIZE 8196 
 void pexit(char * msg)
 {
@@ -33,16 +33,21 @@ void main()
     if((sockfd = socket(AF_INET, SOCK_STREAM,0)) <0) //create a client socket
         pexit("socket() error");
 
-    serv_addr.sin_family = AF_INET;	//Set the socket with IPv4 serv_addr.sin_addr.s_addr = inet_addr(IP_ADDRESS);// set ip address serv_addr.sin_port = htons(PORT); // set ip port number
+    serv_addr.sin_family = AF_INET;	//Set the socket with IPv4 
+    serv_addr.sin_addr.s_addr = inet_addr(IP_ADDRESS);// set ip address 
+    serv_addr.sin_port = htons(PORT); // set ip port number
 
     /* Connect the socket offered by the web server */
     if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) <0) 
         pexit("connect() error");
 
-    /* Now the sockfd can be used to communicate to the server the GET request */ printf("Send bytes=%d %s\n",strlen(httprequestMsg), httprequestMsg); write(sockfd, httprequestMsg, strlen(httprequestMsg));
+    /* Now the sockfd can be used to communicate to the server the GET request */ 
+    printf("Send bytes=%d %s\n",strlen(httprequestMsg), httprequestMsg); 
+    write(sockfd, httprequestMsg, strlen(httprequestMsg));
 
-    /* This displays the raw HTML file (if index.html) as received by the browser */ while( (i=read(sockfd,buffer,BUFSIZE)) > 0)
-    write(1,buffer,i);
+    /* This displays the raw HTML file (if index.html) as received by the browser */ 
+    while( (i=read(sockfd,buffer,BUFSIZE)) > 0)
+        write(1,buffer,i);
     /*close the socket*/
     close(sockfd);
 }

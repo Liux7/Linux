@@ -30,7 +30,8 @@
 #define SEM_NAME "sem_example" 
 #define SHM_NAME "mmap_example"
 
-void * totaltime;
+void *tmpargv;
+// void * totaltime, *linkcnt;
 
 struct { char *ext;
 char *filetype;
@@ -46,6 +47,8 @@ char *filetype;
 {"htm", "text/html" },
 {"html","text/html" },
 {0,0} };
+
+
 
 
 void logger(int type, char *s1, char *s2, int socket_fd)
@@ -91,15 +94,29 @@ void logger(int type, char *s1, char *s2, int socket_fd)
     if(type == ERROR || type == NOTFOUND || type == FORBIDDEN) exit(3);
 }
 
+void* totalsR, *totalsW, *totallog, *totalrhtml;
+double socketRead = 0.0, socketWrite = 0.0, logtime = 0.0, readhtml = 0.0;
+
 /* this is a child web server process, so we can exit on errors */ 
 void web(int fd, int hit)
 {
-    /*===========================read socket=================================*/
+    struct timeval t0, t1, t2, t3;
 
+    
+    double tmptime = 0.0;
     int j, file_fd, buflen; long i, ret, len; char * fstr;
     static char buffer[BUFSIZE+1]; /* static so zero filled */
 
+    /*===========================read socket=================================*/
+    gettimeofday(&t0, NULL);
     ret =read(fd,buffer,BUFSIZE);	/* read Web request in one go */ 
+    gettimeofday(&t1, NULL);
+    tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
+    socketRead += tmptime;
+
+    /*==============================log=========================================*/
+    gettimeofday(&t0, NULL);
+
     if(ret == 0 || ret == -1) { /* read failure stop now */
         logger(FORBIDDEN,"failed to read browser request","",fd);
     }
@@ -113,6 +130,7 @@ void web(int fd, int hit)
     for(i=0;i<ret;i++) /* remove CF and LF characters */ 
         if(buffer[i] == '\r' || buffer[i] == '\n')
             buffer[i]='*'; 
+
     logger(LOG,"request",buffer,hit);
     if( strncmp(buffer,"GET ",4) && strncmp(buffer,"get ",4) ) 
     { 
@@ -133,6 +151,10 @@ void web(int fd, int hit)
     if( !strncmp(&buffer[0],"GET /\0",6) || !strncmp(&buffer[0],"get /\0",6) ) 
         (void)strcpy(buffer,"GET /index.html");
  
+    gettimeofday(&t1, NULL);
+    tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
+    logtime += tmptime;
+    
 
     /* work out the file type and check we support it */ 
     buflen=strlen(buffer);
@@ -152,22 +174,47 @@ void web(int fd, int hit)
     { /* open the file for reading */ 
         logger(NOTFOUND, "failed to open file",&buffer[5],fd);
     }
+
+/*==============================log=========================================*/
+    gettimeofday(&t0, NULL);
     logger(LOG,"SEND",&buffer[5],hit);
+    
+    
+
     len = (long)lseek(file_fd, (off_t)0, SEEK_END); /* lseek to the file end to find the length */ 
-        (void)lseek(file_fd, (off_t)0, SEEK_SET); /* lseek back to the file start ready for reading */
-        (void)sprintf(buffer,"HTTP/1.1 200 OK\nServer: nweb/%d.0\nContent-Length: %ld\nConnection: \
+    (void)lseek(file_fd, (off_t)0, SEEK_SET); /* lseek back to the file start ready for reading */
+    (void)sprintf(buffer,"HTTP/1.1 200 OK\nServer: nweb/%d.0\nContent-Length: %ld\nConnection: \
     close\nContent-Type: %s\n\n", VERSION, len, fstr); /* Header + a blank line */ 
-        logger(LOG,"Header",buffer,hit);
+
+   
+    logger(LOG,"Header",buffer,hit);
+    gettimeofday(&t1, NULL);
+    tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
+    logtime += tmptime;
+    
+    /*===========================write socket=================================*/
+    gettimeofday(&t0, NULL);
     (void)write(fd,buffer,strlen(buffer));
+    gettimeofday(&t1, NULL);
+    tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
+    socketWrite += tmptime;
+
 
 /* send file in 8KB block - last block may be smaller */ 
-    while ( (ret = read(file_fd, buffer, BUFSIZE)) > 0 ) 
+    gettimeofday(&t0, NULL);
+    while ((ret = read(file_fd, buffer, BUFSIZE)) > 0) 
     {
         (void)write(fd,buffer,ret);
     }
+    gettimeofday(&t1, NULL);
+    tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec);
+    readhtml += tmptime;
     sleep(1); /* allow socket to drain before signalling the socket is closed */ 
     close(fd);
    // exit(1);
+   
+   
+
 }
 
 int main(int argc, char **argv)
@@ -200,6 +247,7 @@ int main(int argc, char **argv)
 
 	
     /* Become deamon + unstopable and no zombies children (= no wait()) */ 
+    
     if(fork() != 0)
         return 0; /* parent returns OK to shell */ 
     (void)signal(SIGCLD, SIG_IGN); /* ignore child death */ 
@@ -227,33 +275,66 @@ int main(int argc, char **argv)
 	
     sem_t* psem;
     //创建信号量,初始信号量为 1
+    
     if((psem=sem_open(SEM_NAME, O_CREAT,0666, 1))==SEM_FAILED)
     {
         perror("create semaphore error"); 
         exit(1);
     }
-
     int shm_fd;
+    // , shm_fd1, shm_fd2, shm_fd3, shm_fd4, shm_fd5;
     //创建共享内存对象
     if((shm_fd=shm_open(SHM_NAME,O_RDWR| O_CREAT,0666)) < 0){ 
         perror("create shared memory object error");
         exit(1);
     }
-
+    // if((shm_fd1=shm_open(SHM_NAME,O_RDWR| O_CREAT,0666)) < 0){ 
+    //     perror("create shared memory object error");
+    //     exit(1);
+    // }
+    // if((shm_fd2=shm_open(SHM_NAME,O_RDWR| O_CREAT,0666)) < 0){ 
+    //     perror("create shared memory object error");
+    //     exit(1);
+    // }
+    // if((shm_fd3=shm_open(SHM_NAME,O_RDWR| O_CREAT,0666)) < 0){ 
+    //     perror("create shared memory object error");
+    //     exit(1);
+    // }
+    // if((shm_fd4=shm_open(SHM_NAME,O_RDWR| O_CREAT,0666)) < 0){ 
+    //     perror("create shared memory object error");
+    //     exit(1);
+    // }
+    // if((shm_fd5=shm_open(SHM_NAME,O_RDWR| O_CREAT,0666)) < 0){ 
+    //     perror("create shared memory object error");
+    //     exit(1);
+    // }
     /* 配 置 共 享 内 存 段 大 小 */ 
-    ftruncate(shm_fd, sizeof(double));
+    ftruncate(shm_fd, sizeof(double)*6);
+    // ftruncate(shm_fd1, sizeof(double));
+    // ftruncate(shm_fd2, sizeof(double));
+    // ftruncate(shm_fd3, sizeof(double));
+    // ftruncate(shm_fd4, sizeof(double));
+    // ftruncate(shm_fd5, sizeof(int));
     //将共享内存对象映射到进程
-    totaltime = mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    tmpargv = mmap(NULL, sizeof(double)*6, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    // totalsR = mmap(NULL, sizeof(double), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd1, 0);
+    // totalsW = mmap(NULL, sizeof(double), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd2, 0);
+    // totallog = mmap(NULL, sizeof(double), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd3, 0);
+    // totalrhtml = mmap(NULL, sizeof(double), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd4, 0);
+    // linkcnt = mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd4, 0);
 
-    if(totaltime==MAP_FAILED)
+    if(tmpargv == MAP_FAILED)
     {
-         perror("create mmap error"); 
+        perror("create mmap error"); 
         exit(1);
     }
-
+    
     //为此内存区域赋值
-    * (double *) totaltime= 0.0;
-
+    // * (double *) totaltime= 0.0;
+    for(int i = 0; i < 6; i++)
+    {
+        *(double *)(tmpargv+i*sizeof(double)) = 0.0;
+    }
     struct timeval t1, t2;
 		
     for(hit=1; ;hit++) {
@@ -272,13 +353,31 @@ int main(int argc, char **argv)
     	    web(socketfd,hit); /* never returns */
             gettimeofday(&t2, NULL);
 
-            double ptime =  (t2.tv_sec - t1.tv_sec)*1000 + (t2.tv_usec - t1.tv_usec);
+            double ptime =  (t2.tv_sec - t1.tv_sec)*1000 + (t2.tv_usec - t1.tv_usec)/1000;
+            // double ptime =  (t2.tv_sec - t1.tv_sec)*1000; 
 			sem_wait(psem);
-            * (double *) totaltime += ptime;
+            *(double *)tmpargv += ptime;
+            (*(double *)(tmpargv+1*sizeof(double))) += (socketRead/1000);
+            (*(double *)(tmpargv+2*sizeof(double))) += (socketWrite/1000);
+            (*(double *)(tmpargv+3*sizeof(double))) += (logtime/1000);
+            (*(double *)(tmpargv+4*sizeof(double))) += (readhtml/1000);
+            (*(double*)(tmpargv+5*sizeof(double)))++;
+            int cnt = (int)(*(double*)(tmpargv+5*sizeof(double)));
             /*=================================*/
-            char buff[60];
+            char buff[1000];
             int fp2 = open("/home/liux7/Desktop/Linux/web/Web/time.txt",O_CREAT| O_WRONLY | O_APPEND,0644);
-            (void)sprintf(buff, "ptime%lf totaltime:%lf\n", ptime, * (double *)totaltime);
+
+            (void)sprintf(buff, "%d request's totaltime:%lf\n per request use average time:%lf\n per request read socket average time:%lf\n \
+per request write socket average time:%lf\n per request write log average time:%lf\n \
+per request read html average time:%lf\n \n",               
+                cnt,
+                (*(double *)(tmpargv)),
+                (*(double *)(tmpargv))/cnt,
+                (*(double *) (tmpargv+1*sizeof(double)))/cnt,
+                (*(double *) (tmpargv+2*sizeof(double)))/cnt,
+                (*(double *) (tmpargv+3*sizeof(double)))/cnt,
+                (*(double *) (tmpargv+4*sizeof(double)))/cnt);
+            // (void)sprintf(buff, "%lf sR%lf sW%lf lt%lf rh%lf\n",ptime, socketRead/1000, socketWrite/1000, logtime/1000, readhtml/1000);
             (void)write(fp2, buff, strlen(buff));
             (void)close(fp2);
             /*===================================*/
