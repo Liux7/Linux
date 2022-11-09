@@ -1,0 +1,4 @@
+74690 fetches, 2 max parallel, 0 bytes, in 20.3789 seconds
+0 mean bytes/connection
+3665.06 fetches/sec, 0 bytes/sec
+HTTP response codes:

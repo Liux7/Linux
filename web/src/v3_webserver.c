@@ -221,7 +221,8 @@ int main(int argc, char **argv)
 {
 
     int i, pid, port, listenfd, socketfd, hit; socklen_t length;
-    static struct sockaddr_in cli_addr; /* static = initialised to zeros */ static struct sockaddr_in serv_addr; /* static = initialised to zeros */
+    static struct sockaddr_in cli_addr; /* static = initialised to zeros */ 
+    static struct sockaddr_in serv_addr; /* static = initialised to zeros */
 /*deal input format begin*/
     if( argc < 3 || argc > 3 || !strcmp(argv[1], "-?") ) {
         (void)printf("hint: nweb Port-Number Top-Directory\t\tversion %d\n\n" "\tnweb is a small and very safe mini web server\n"

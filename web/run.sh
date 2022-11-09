@@ -1,4 +1,4 @@
 #!/bin/sh
 killall server
-make sm
+make ptd
 ./bin/server 8088 ./Web
