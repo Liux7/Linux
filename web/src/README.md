@@ -12,4 +12,8 @@ v4.2_webserver.c fix the trouble in v4, good!!
 
 v5_webserver.c exp3 add mutex lock based on v4
 
-v6_webserver_threadpool.c exp4 threadpool, pay attention to its compile
+v6_webserver_threadpool.c exp4, add threadpool, pay attention to its compile
+
+v7_webserver.c exp5, business segmentation model, add readmsg threadpool, readfile threadpool, sendmsg threadpool, filename queue, msg queue.
+
+2022/11/10

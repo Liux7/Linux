@@ -20,5 +20,8 @@ webserver_threadpool.o:
 threadpool.o:
 	gcc -c $(src)/threadpool.c  $(flag) -o $(bin)/threadpool.o
 
+multiptdpl:
+	gcc $(src)/webserver.c -o $(obj) $(flag)
+
 clean:
 	rm $(obj)
