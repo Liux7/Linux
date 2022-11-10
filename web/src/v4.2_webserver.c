@@ -147,7 +147,7 @@ void* web(void * data)
 		logger(LOG,"SEND",&buffer[5],hit);
 		len = (long)lseek(file_fd, (off_t)0, SEEK_END); /* 使用 lseek 来获得文件长度，比较低效*/
 		(void)lseek(file_fd, (off_t)0, SEEK_SET); /* 想想还有什么方法来获取*/
- 		(void)sprintf(buffer,"http/1.1 200 ok\nserver: nweb/%d.0\ncontent-length: %ld\nconnection: close\ncontent-type: %s\n\n", VERSION, len, fstr); /* header + a blank line */
+ 		(void)sprintf(buffer,"HTTP/1.1 200 ok\nserver: nweb/%d.0\ncontent-length: %ld\nconnection: close\ncontent-type: %s\n\n", VERSION, len, fstr); /* header + a blank line */
    		logger(LOG,"Header",buffer,hit); (void)write(fd,buffer,strlen(buffer));
 		/* send file in 8kb block - last block may be smaller */
 		while ( (ret = read(file_fd, buffer, BUFSIZE)) > 0 )
