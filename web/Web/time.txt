@@ -34900,3 +34900,2131 @@
  per request write log average time:213.553303
  per request read html average time:38.532677
  
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:7.337000
+ per request write socket average time:0.013500
+ per request write log average time:0.055000
+ per request read html average time:0.253500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:600.781667
+ per request write socket average time:0.037000
+ per request write log average time:0.160667
+ per request read html average time:0.363333
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:897.509750
+ per request write socket average time:0.057750
+ per request write log average time:0.244000
+ per request read html average time:0.756000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1075.548400
+ per request write socket average time:0.070200
+ per request write log average time:0.294000
+ per request read html average time:0.991600
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1194.242167
+ per request write socket average time:0.078500
+ per request write log average time:0.339667
+ per request read html average time:1.148667
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1279.023429
+ per request write socket average time:0.084429
+ per request write log average time:0.385429
+ per request read html average time:1.260857
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1342.609375
+ per request write socket average time:0.088875
+ per request write log average time:0.419750
+ per request read html average time:1.345000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.787500
+ per request write socket average time:0.029500
+ per request write log average time:0.096500
+ per request read html average time:0.393500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.286667
+ per request write socket average time:0.063667
+ per request write log average time:0.217667
+ per request read html average time:0.852333
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.537500
+ per request write socket average time:0.094000
+ per request write log average time:0.325500
+ per request read html average time:1.085750
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.689800
+ per request write socket average time:0.125600
+ per request write log average time:0.433400
+ per request read html average time:1.236400
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.792167
+ per request write socket average time:0.154333
+ per request write log average time:0.519667
+ per request read html average time:1.339500
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.907857
+ per request write socket average time:0.181571
+ per request write log average time:0.601429
+ per request read html average time:1.417286
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.995500
+ per request write socket average time:0.208625
+ per request write log average time:0.680625
+ per request read html average time:1.478250
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.064333
+ per request write socket average time:0.234889
+ per request write log average time:0.764444
+ per request read html average time:1.529333
+ 
+10 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.120500
+ per request write socket average time:0.260200
+ per request write log average time:0.847500
+ per request read html average time:1.571700
+ 
+11 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.173182
+ per request write socket average time:0.283909
+ per request write log average time:0.931455
+ per request read html average time:1.609545
+ 
+12 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.256000
+ per request write socket average time:0.307917
+ per request write log average time:1.011333
+ per request read html average time:1.642250
+ 
+13 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.333385
+ per request write socket average time:0.329462
+ per request write log average time:1.089846
+ per request read html average time:1.670692
+ 
+14 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.400214
+ per request write socket average time:0.351071
+ per request write log average time:1.167429
+ per request read html average time:1.696071
+ 
+15 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.471000
+ per request write socket average time:0.372933
+ per request write log average time:1.245533
+ per request read html average time:1.720600
+ 
+16 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.533313
+ per request write socket average time:0.395875
+ per request write log average time:1.321625
+ per request read html average time:1.743437
+ 
+17 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.609059
+ per request write socket average time:0.419176
+ per request write log average time:1.403353
+ per request read html average time:1.766118
+ 
+18 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.681944
+ per request write socket average time:0.442778
+ per request write log average time:1.482833
+ per request read html average time:1.787333
+ 
+19 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.747526
+ per request write socket average time:0.466211
+ per request write log average time:1.559316
+ per request read html average time:1.807789
+ 
+20 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.811050
+ per request write socket average time:0.490650
+ per request write log average time:1.636300
+ per request read html average time:1.827000
+ 
+21 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.868857
+ per request write socket average time:0.515143
+ per request write log average time:1.716524
+ per request read html average time:1.846286
+ 
+22 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.925727
+ per request write socket average time:0.539636
+ per request write log average time:1.795045
+ per request read html average time:1.864545
+ 
+23 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.990957
+ per request write socket average time:0.564217
+ per request write log average time:1.872609
+ per request read html average time:1.882565
+ 
+24 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:3.063083
+ per request write socket average time:0.588417
+ per request write log average time:1.947333
+ per request read html average time:1.899583
+ 
+25 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:3.161360
+ per request write socket average time:0.612200
+ per request write log average time:2.021040
+ per request read html average time:1.916080
+ 
+26 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:3.259923
+ per request write socket average time:0.634808
+ per request write log average time:2.092923
+ per request read html average time:1.931577
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.121000
+ per request write socket average time:0.022500
+ per request write log average time:0.085000
+ per request read html average time:0.008000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.327000
+ per request write socket average time:0.058000
+ per request write log average time:0.196333
+ per request read html average time:0.038000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.478750
+ per request write socket average time:0.087000
+ per request write log average time:0.278000
+ per request read html average time:0.056750
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.279500
+ per request write socket average time:0.039500
+ per request write log average time:0.108500
+ per request read html average time:0.009500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.406667
+ per request write socket average time:0.062333
+ per request write log average time:0.191333
+ per request read html average time:0.022000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.514000
+ per request write socket average time:0.086250
+ per request write log average time:0.275500
+ per request read html average time:0.032750
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.637200
+ per request write socket average time:0.104800
+ per request write log average time:0.372600
+ per request read html average time:0.041400
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.768000
+ per request write socket average time:0.117167
+ per request write log average time:0.437333
+ per request read html average time:0.047167
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.862143
+ per request write socket average time:0.126000
+ per request write log average time:0.494429
+ per request read html average time:0.051286
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.933625
+ per request write socket average time:0.132625
+ per request write log average time:0.545500
+ per request read html average time:0.054375
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.989222
+ per request write socket average time:0.137778
+ per request write log average time:0.585222
+ per request read html average time:0.056778
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.095500
+ per request write socket average time:0.032500
+ per request write log average time:0.112000
+ per request read html average time:0.012500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.261333
+ per request write socket average time:0.059333
+ per request write log average time:0.223667
+ per request read html average time:0.031000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.346000
+ per request write socket average time:0.084250
+ per request write log average time:0.305000
+ per request read html average time:0.043750
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.398600
+ per request write socket average time:0.122200
+ per request write log average time:0.391600
+ per request read html average time:0.060800
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.496833
+ per request write socket average time:0.155500
+ per request write log average time:0.479000
+ per request read html average time:0.075500
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.621429
+ per request write socket average time:0.188000
+ per request write log average time:0.570857
+ per request read html average time:0.092714
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.715500
+ per request write socket average time:0.220625
+ per request write log average time:0.666375
+ per request read html average time:0.107500
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.156000
+ per request write socket average time:0.017500
+ per request write log average time:0.158500
+ per request read html average time:0.006500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.343000
+ per request write socket average time:0.030000
+ per request write log average time:0.291333
+ per request read html average time:0.017333
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.548500
+ per request write socket average time:0.056500
+ per request write log average time:0.387500
+ per request read html average time:0.027000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.764800
+ per request write socket average time:0.081200
+ per request write log average time:0.468200
+ per request read html average time:0.038400
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.990500
+ per request write socket average time:0.110667
+ per request write log average time:0.561667
+ per request read html average time:0.051000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.003500
+ per request write socket average time:0.035500
+ per request write log average time:0.097000
+ per request read html average time:0.008000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.007000
+ per request write socket average time:0.063667
+ per request write log average time:0.176000
+ per request read html average time:0.023667
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.010500
+ per request write socket average time:0.089250
+ per request write log average time:0.251500
+ per request read html average time:0.035000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.054000
+ per request write socket average time:0.113800
+ per request write log average time:0.345000
+ per request read html average time:0.049600
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.084333
+ per request write socket average time:0.130167
+ per request write log average time:0.407333
+ per request read html average time:0.059333
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.107000
+ per request write socket average time:0.141857
+ per request write log average time:0.460571
+ per request read html average time:0.066286
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.124000
+ per request write socket average time:0.150625
+ per request write log average time:0.510000
+ per request read html average time:0.071500
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.137778
+ per request write socket average time:0.157444
+ per request write log average time:0.548444
+ per request read html average time:0.075556
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.183500
+ per request write socket average time:0.011500
+ per request write log average time:0.129000
+ per request read html average time:0.004500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.323333
+ per request write socket average time:0.024000
+ per request write log average time:0.214000
+ per request read html average time:0.015333
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.474750
+ per request write socket average time:0.034250
+ per request write log average time:0.281000
+ per request read html average time:0.022000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.612600
+ per request write socket average time:0.044000
+ per request write log average time:0.348600
+ per request read html average time:0.029000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.748500
+ per request write socket average time:0.053833
+ per request write log average time:0.422333
+ per request read html average time:0.035000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.003000
+ per request write socket average time:0.029000
+ per request write log average time:0.095000
+ per request read html average time:0.012500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.036667
+ per request write socket average time:0.057333
+ per request write log average time:0.187000
+ per request read html average time:0.030667
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.054750
+ per request write socket average time:0.081000
+ per request write log average time:0.260750
+ per request read html average time:0.042750
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.022810
+ per request write socket average time:0.106400
+ per request write log average time:0.340000
+ per request read html average time:0.058400
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.068333
+ per request write socket average time:0.128833
+ per request write log average time:0.429833
+ per request read html average time:0.072000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.288000
+ per request write socket average time:0.023500
+ per request write log average time:0.077500
+ per request read html average time:0.008000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.023500
+ per request write socket average time:0.020500
+ per request write log average time:0.072500
+ per request read html average time:0.007000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.051000
+ per request write socket average time:0.022500
+ per request write log average time:0.148500
+ per request read html average time:0.007500
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.173500
+ per request write socket average time:0.026000
+ per request write log average time:0.109500
+ per request read html average time:0.007500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.326333
+ per request write socket average time:0.042667
+ per request write log average time:0.231333
+ per request read html average time:0.017667
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.579750
+ per request write socket average time:0.063750
+ per request write log average time:0.330000
+ per request read html average time:0.026500
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.791000
+ per request write socket average time:0.083800
+ per request write log average time:0.435000
+ per request read html average time:0.036400
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.990833
+ per request write socket average time:0.100167
+ per request write log average time:0.531833
+ per request read html average time:0.044000
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.171429
+ per request write socket average time:0.114571
+ per request write log average time:0.622143
+ per request read html average time:0.051143
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.307750
+ per request write socket average time:0.125375
+ per request write log average time:0.696125
+ per request read html average time:0.056500
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.004000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.005333
+ per request write socket average time:0.000000
+ per request write log average time:0.032000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.009000
+ per request write socket average time:0.011250
+ per request write log average time:0.058000
+ per request read html average time:0.003500
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.012200
+ per request write socket average time:0.018000
+ per request write log average time:0.183800
+ per request read html average time:0.005600
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.004000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.007000
+ per request write socket average time:0.000000
+ per request write log average time:0.093000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.008500
+ per request write socket average time:0.000000
+ per request write log average time:0.174750
+ per request read html average time:0.000000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.009400
+ per request write socket average time:0.015600
+ per request write log average time:0.241200
+ per request read html average time:0.003000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.004500
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.008333
+ per request write socket average time:0.000000
+ per request write log average time:0.053667
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.011500
+ per request write socket average time:0.024750
+ per request write log average time:0.080500
+ per request read html average time:0.006250
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.004000
+ per request write socket average time:0.028000
+ per request write log average time:0.094000
+ per request read html average time:0.011000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.130333
+ per request write socket average time:0.042667
+ per request write log average time:0.182000
+ per request read html average time:0.019667
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.195250
+ per request write socket average time:0.050000
+ per request write log average time:0.226000
+ per request read html average time:0.024000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.235600
+ per request write socket average time:0.054400
+ per request write log average time:0.263800
+ per request read html average time:0.026600
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.263333
+ per request write socket average time:0.064667
+ per request write log average time:0.308500
+ per request read html average time:0.042000
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.283714
+ per request write socket average time:0.076286
+ per request write log average time:0.441857
+ per request read html average time:0.054857
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.299750
+ per request write socket average time:0.088875
+ per request write log average time:0.590750
+ per request read html average time:0.066125
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.312889
+ per request write socket average time:0.098667
+ per request write log average time:0.730000
+ per request read html average time:0.074889
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.162000
+ per request write socket average time:0.024500
+ per request write log average time:0.103500
+ per request read html average time:0.008000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.383333
+ per request write socket average time:0.051333
+ per request write log average time:0.190000
+ per request read html average time:0.026667
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.496000
+ per request write socket average time:0.064750
+ per request write log average time:0.233250
+ per request read html average time:0.036000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.565200
+ per request write socket average time:0.072800
+ per request write log average time:0.279400
+ per request read html average time:0.041600
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.612333
+ per request write socket average time:0.083667
+ per request write log average time:0.328167
+ per request read html average time:0.055833
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.647000
+ per request write socket average time:0.091429
+ per request write log average time:0.418143
+ per request read html average time:0.066000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.215000
+ per request write socket average time:0.009000
+ per request write log average time:0.079000
+ per request read html average time:0.003000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.289000
+ per request write socket average time:0.029000
+ per request write log average time:0.199000
+ per request read html average time:0.019000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.327750
+ per request write socket average time:0.050250
+ per request write log average time:0.284750
+ per request read html average time:0.030750
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.444600
+ per request write socket average time:0.071000
+ per request write log average time:0.354800
+ per request read html average time:0.042800
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.523667
+ per request write socket average time:0.084833
+ per request write log average time:0.418500
+ per request read html average time:0.050833
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.580857
+ per request write socket average time:0.101429
+ per request write log average time:0.505000
+ per request read html average time:0.058714
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.624500
+ per request write socket average time:0.117250
+ per request write log average time:0.569875
+ per request read html average time:0.066125
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.659222
+ per request write socket average time:0.129556
+ per request write log average time:0.630000
+ per request read html average time:0.071889
+ 
+10 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.687500
+ per request write socket average time:0.139400
+ per request write log average time:0.678100
+ per request read html average time:0.076500
+ 
+11 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.710636
+ per request write socket average time:0.147455
+ per request write log average time:0.766727
+ per request read html average time:0.080273
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.111500
+ per request write socket average time:0.009000
+ per request write log average time:0.074500
+ per request read html average time:0.003000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.289667
+ per request write socket average time:0.019000
+ per request write log average time:0.163667
+ per request read html average time:0.011000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.430750
+ per request write socket average time:0.027750
+ per request write log average time:0.236000
+ per request read html average time:0.016500
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.743000
+ per request write socket average time:0.038400
+ per request write log average time:0.306400
+ per request read html average time:0.023000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.015500
+ per request write socket average time:0.048000
+ per request write log average time:0.369833
+ per request read html average time:0.028333
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.005000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.009333
+ per request write socket average time:0.034333
+ per request write log average time:0.286667
+ per request read html average time:0.015333
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.013250
+ per request write socket average time:0.051500
+ per request write log average time:0.430000
+ per request read html average time:0.023000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.016600
+ per request write socket average time:0.078000
+ per request write log average time:0.607800
+ per request read html average time:0.031000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.020000
+ per request write socket average time:0.095667
+ per request write log average time:0.739000
+ per request read html average time:0.036333
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.171000
+ per request write socket average time:0.023000
+ per request write log average time:0.075500
+ per request read html average time:0.007500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.291667
+ per request write socket average time:0.037333
+ per request write log average time:0.156667
+ per request read html average time:0.028667
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.397750
+ per request write socket average time:0.049750
+ per request write log average time:0.228750
+ per request read html average time:0.041000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.499200
+ per request write socket average time:0.060800
+ per request write log average time:0.301000
+ per request read html average time:0.050800
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.603333
+ per request write socket average time:0.070833
+ per request write log average time:0.374167
+ per request read html average time:0.058333
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.716571
+ per request write socket average time:0.086286
+ per request write log average time:0.456571
+ per request read html average time:0.065857
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.843875
+ per request write socket average time:0.103875
+ per request write log average time:0.537875
+ per request read html average time:0.073375
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.015889
+ per request write socket average time:0.124000
+ per request write log average time:0.625111
+ per request read html average time:0.083889
+ 
+10 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.228700
+ per request write socket average time:0.142700
+ per request write log average time:0.722800
+ per request read html average time:0.093200
+ 
+11 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.427091
+ per request write socket average time:0.165182
+ per request write log average time:0.814818
+ per request read html average time:0.102091
+ 
+12 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.644167
+ per request write socket average time:0.185583
+ per request write log average time:0.906167
+ per request read html average time:0.110083
+ 
+13 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.848385
+ per request write socket average time:0.203846
+ per request write log average time:0.990462
+ per request read html average time:0.117538
+ 
+14 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.045000
+ per request write socket average time:0.225071
+ per request write log average time:1.076500
+ per request read html average time:0.125714
+ 
+15 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.233267
+ per request write socket average time:0.251333
+ per request write log average time:1.159667
+ per request read html average time:0.135067
+ 
+16 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.398250
+ per request write socket average time:0.277062
+ per request write log average time:1.238125
+ per request read html average time:0.144250
+ 
+17 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.564941
+ per request write socket average time:0.301588
+ per request write log average time:1.315235
+ per request read html average time:0.155471
+ 
+18 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.722444
+ per request write socket average time:0.328833
+ per request write log average time:1.393778
+ per request read html average time:0.167556
+ 
+19 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.868842
+ per request write socket average time:0.354211
+ per request write log average time:1.477053
+ per request read html average time:0.178947
+ 
+20 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:3.010250
+ per request write socket average time:0.379050
+ per request write log average time:1.556450
+ per request read html average time:0.189850
+ 
+21 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:3.321619
+ per request write socket average time:0.402381
+ per request write log average time:1.636476
+ per request read html average time:0.200286
+ 
+22 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:3.626773
+ per request write socket average time:0.425318
+ per request write log average time:1.713864
+ per request read html average time:0.210364
+ 
+23 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:3.911000
+ per request write socket average time:0.446783
+ per request write log average time:1.788565
+ per request read html average time:0.219957
+ 
+24 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:4.194167
+ per request write socket average time:0.468333
+ per request write log average time:1.862417
+ per request read html average time:0.229375
+ 
+                                                                                                                                                                                                                     1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.001500
+ per request write socket average time:0.011500
+ per request write log average time:0.043500
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.003000
+ per request write socket average time:0.015333
+ per request write log average time:0.058000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.004500
+ per request write socket average time:0.017250
+ per request write log average time:0.065250
+ per request read html average time:0.000000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.005800
+ per request write socket average time:0.018400
+ per request write log average time:0.099200
+ per request read html average time:0.000000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.009833
+ per request write socket average time:0.028667
+ per request write log average time:0.255167
+ per request read html average time:0.066000
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.012714
+ per request write socket average time:0.036000
+ per request write log average time:0.366571
+ per request read html average time:0.113143
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.014875
+ per request write socket average time:0.041500
+ per request write log average time:0.466250
+ per request read html average time:0.148500
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.016778
+ per request write socket average time:0.047778
+ per request write log average time:0.546556
+ per request read html average time:0.176889
+ 
+10 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.018500
+ per request write socket average time:0.052800
+ per request write log average time:0.610800
+ per request read html average time:0.199600
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.003000
+ per request write socket average time:0.015500
+ per request write log average time:0.041500
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.002000
+ per request write socket average time:0.020667
+ per request write log average time:0.055333
+ per request read html average time:0.000000
+ 
+4 request's totaltime:3.000000
+ per request use average time:0.750000
+ per request read socket average time:0.004250
+ per request write socket average time:0.034000
+ per request write log average time:0.105000
+ per request read html average time:0.400000
+ 
+5 request's totaltime:3.000000
+ per request use average time:0.600000
+ per request read socket average time:0.006200
+ per request write socket average time:0.041425
+ per request write log average time:0.134800
+ per request read html average time:0.640000
+ 
+6 request's totaltime:3.000000
+ per request use average time:0.500000
+ per request read socket average time:0.007500
+ per request write socket average time:0.012333
+ per request write log average time:0.159333
+ per request read html average time:0.800000
+ 
+7 request's totaltime:3.000000
+ per request use average time:0.428571
+ per request read socket average time:0.008857
+ per request write socket average time:0.021143
+ per request write log average time:0.176857
+ per request read html average time:0.914286
+ 
+8 request's totaltime:3.000000
+ per request use average time:0.375000
+ per request read socket average time:0.009875
+ per request write socket average time:0.027750
+ per request write log average time:0.046006
+ per request read html average time:1.000000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.261000
+ per request write socket average time:0.008000
+ per request write log average time:0.031500
+ per request read html average time:0.003000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.454500
+ per request write socket average time:0.019500
+ per request write log average time:0.076500
+ per request read html average time:0.007000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.679000
+ per request write socket average time:0.036667
+ per request write log average time:0.180000
+ per request read html average time:0.021333
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.097750
+ per request write socket average time:0.051750
+ per request write log average time:0.254000
+ per request read html average time:0.030750
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.425600
+ per request write socket average time:0.065487
+ per request write log average time:0.316000
+ per request read html average time:0.040000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.644167
+ per request write socket average time:0.020667
+ per request write log average time:0.357333
+ per request read html average time:0.046167
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.800857
+ per request write socket average time:0.035429
+ per request write log average time:0.386857
+ per request read html average time:0.050571
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:1.918375
+ per request write socket average time:0.046500
+ per request write log average time:0.484433
+ per request read html average time:0.053875
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.009778
+ per request write socket average time:0.055111
+ per request write log average time:0.066444
+ per request read html average time:0.056444
+ 
+10 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.083100
+ per request write socket average time:0.064500
+ per request write log average time:0.125000
+ per request read html average time:0.058824
+ 
+11 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.143909
+ per request write socket average time:0.074182
+ per request write log average time:0.202000
+ per request read html average time:0.008818
+ 
+12 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:2.194833
+ per request write socket average time:0.083917
+ per request write log average time:0.273083
+ per request read html average time:0.017000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:29.095000
+ per request write socket average time:1.218000
+ per request write log average time:4.359000
+ per request read html average time:0.318000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.001250
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.002600
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:3.000000
+ per request use average time:0.750000
+ per request read socket average time:0.001250
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+5 request's totaltime:3.000000
+ per request use average time:0.600000
+ per request read socket average time:0.002000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.001250
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.002000
+ per request write socket average time:0.000000
+ per request write log average time:0.004800
+ per request read html average time:0.000000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.003333
+ per request write socket average time:0.002833
+ per request write log average time:0.013667
+ per request read html average time:0.001000
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.004857
+ per request write socket average time:0.007143
+ per request write log average time:0.075429
+ per request read html average time:0.002571
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.006500
+ per request write socket average time:0.018875
+ per request write log average time:0.111006
+ per request read html average time:0.006750
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.007778
+ per request write socket average time:0.028000
+ per request write log average time:0.098667
+ per request read html average time:0.010000
+ 
+10 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.008800
+ per request write socket average time:0.035300
+ per request write log average time:0.177600
+ per request read html average time:0.012600
+ 
+11 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.009909
+ per request write socket average time:0.041273
+ per request write log average time:0.243818
+ per request read html average time:0.003273
+ 
+12 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.011500
+ per request write socket average time:0.051583
+ per request write log average time:0.345917
+ per request read html average time:0.007667
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.167000
+ per request write socket average time:0.784000
+ per request write log average time:5.620000
+ per request read html average time:0.148000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.098000
+ per request write socket average time:0.474500
+ per request write log average time:3.544500
+ per request read html average time:0.102000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.075000
+ per request write socket average time:0.371333
+ per request write log average time:2.852667
+ per request read html average time:0.086667
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.001000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.001500
+ per request write socket average time:0.000000
+ per request write log average time:0.010250
+ per request read html average time:0.000000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.001800
+ per request write socket average time:0.004000
+ per request write log average time:0.016400
+ per request read html average time:0.000000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.002333
+ per request write socket average time:0.006333
+ per request write log average time:0.029500
+ per request read html average time:0.002000
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.003286
+ per request write socket average time:0.010857
+ per request write log average time:0.046857
+ per request read html average time:0.003429
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.004500
+ per request write socket average time:0.020750
+ per request write log average time:0.053631
+ per request read html average time:0.010750
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.005444
+ per request write socket average time:0.028444
+ per request write log average time:0.047667
+ per request read html average time:0.016444
+ 
+10 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.006400
+ per request write socket average time:0.034600
+ per request write log average time:0.085800
+ per request read html average time:0.020294
+ 
+11 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.007364
+ per request write socket average time:0.043000
+ per request write log average time:0.129909
+ per request read html average time:0.007091
+ 
+12 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.008167
+ per request write socket average time:0.050000
+ per request write log average time:0.166667
+ per request read html average time:0.013000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.117000
+ per request write socket average time:0.727000
+ per request write log average time:2.571000
+ per request read html average time:0.234000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.104000
+ per request write socket average time:0.015500
+ per request write log average time:0.053000
+ per request read html average time:0.005500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.122333
+ per request write socket average time:0.025000
+ per request write log average time:0.094333
+ per request read html average time:0.012333
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.241500
+ per request write socket average time:0.043750
+ per request write log average time:0.146500
+ per request read html average time:0.017500
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.395000
+ per request write socket average time:0.062037
+ per request write log average time:0.194400
+ per request read html average time:0.022800
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.519333
+ per request write socket average time:0.024667
+ per request write log average time:0.234000
+ per request read html average time:0.026833
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.624286
+ per request write socket average time:0.043429
+ per request write log average time:0.267571
+ per request read html average time:0.030429
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.720250
+ per request write socket average time:0.058375
+ per request write log average time:0.065631
+ per request read html average time:0.033375
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.811333
+ per request write socket average time:0.071556
+ per request write log average time:0.066333
+ per request read html average time:0.036889
+ 
+10 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.884200
+ per request write socket average time:0.082100
+ per request write log average time:0.119400
+ per request read html average time:0.039375
+ 
+11 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.944091
+ per request write socket average time:0.090727
+ per request write log average time:0.162818
+ per request read html average time:0.005909
+ 
+12 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.994000
+ per request write socket average time:0.097917
+ per request write log average time:0.200167
+ per request read html average time:0.010833
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:13.473000
+ per request write socket average time:1.371000
+ per request write log average time:3.044000
+ per request read html average time:0.201000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:7.510500
+ per request write socket average time:0.783500
+ per request write log average time:1.892500
+ per request read html average time:0.136000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:5.523333
+ per request write socket average time:0.602000
+ per request write log average time:1.544000
+ per request read html average time:0.118333
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:4.530250
+ per request write socket average time:0.520750
+ per request write log average time:1.420500
+ per request read html average time:0.114000
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.093500
+ per request write socket average time:0.014000
+ per request write log average time:0.037500
+ per request read html average time:0.005000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.101333
+ per request write socket average time:0.024667
+ per request write log average time:0.063667
+ per request read html average time:0.008667
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.152000
+ per request write socket average time:0.030000
+ per request write log average time:0.076750
+ per request read html average time:0.010500
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.182800
+ per request write socket average time:0.032669
+ per request write log average time:0.084600
+ per request read html average time:0.011600
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.203333
+ per request write socket average time:0.007667
+ per request write log average time:0.092000
+ per request read html average time:0.012333
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.218286
+ per request write socket average time:0.013143
+ per request write log average time:0.097286
+ per request read html average time:0.012857
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.229750
+ per request write socket average time:0.022875
+ per request write log average time:0.039631
+ per request read html average time:0.015375
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000400
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.002167
+ per request write socket average time:0.006333
+ per request write log average time:0.034500
+ per request read html average time:0.002667
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.002167
+ per request write socket average time:0.005500
+ per request write log average time:0.065000
+ per request read html average time:0.009500
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.001200
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.003333
+ per request write socket average time:0.007333
+ per request write log average time:0.025667
+ per request read html average time:0.002667
+ 
+1 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.000000
+ per request write socket average time:0.000000
+ per request write log average time:0.000000
+ per request read html average time:0.000000
+ 
+2 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.208500
+ per request write socket average time:0.012000
+ per request write log average time:0.032500
+ per request read html average time:0.004500
+ 
+3 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.278667
+ per request write socket average time:0.021667
+ per request write log average time:0.062667
+ per request read html average time:0.211667
+ 
+4 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.314250
+ per request write socket average time:0.030000
+ per request write log average time:0.089750
+ per request read html average time:0.317000
+ 
+5 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.336000
+ per request write socket average time:0.045200
+ per request write log average time:0.114000
+ per request read html average time:0.383000
+ 
+6 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.379167
+ per request write socket average time:0.059833
+ per request write log average time:0.139000
+ per request read html average time:0.428667
+ 
+7 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.440286
+ per request write socket average time:0.074143
+ per request write log average time:0.164857
+ per request read html average time:0.463857
+ 
+8 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.486500
+ per request write socket average time:0.087625
+ per request write log average time:0.191125
+ per request read html average time:0.491750
+ 
+9 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.522778
+ per request write socket average time:0.100667
+ per request write log average time:0.217556
+ per request read html average time:0.517222
+ 
+10 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.552100
+ per request write socket average time:0.113200
+ per request write log average time:0.244400
+ per request read html average time:0.538300
+ 
+11 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.576273
+ per request write socket average time:0.125273
+ per request write log average time:0.270909
+ per request read html average time:0.556818
+ 
+12 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.596417
+ per request write socket average time:0.135333
+ per request write log average time:0.293000
+ per request read html average time:0.572250
+ 
+13 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.613692
+ per request write socket average time:0.143846
+ per request write log average time:0.311692
+ per request read html average time:0.585308
+ 
+14 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.628500
+ per request write socket average time:0.151143
+ per request write log average time:0.328714
+ per request read html average time:0.596500
+ 
+15 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.641333
+ per request write socket average time:0.157467
+ per request write log average time:0.345467
+ per request read html average time:0.606200
+ 
+16 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.652812
+ per request write socket average time:0.165875
+ per request write log average time:0.362250
+ per request read html average time:0.615437
+ 
+17 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.662941
+ per request write socket average time:0.173294
+ per request write log average time:0.377059
+ per request read html average time:0.623588
+ 
+18 request's totaltime:0.000000
+ per request use average time:0.000000
+ per request read socket average time:0.671944
+ per request write socket average time:0.179889
+ per request write log average time:0.390222
+ per request read html average time:0.630833
+ 
