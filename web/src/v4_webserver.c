@@ -18,20 +18,18 @@
 
 #define VERSION 23
 #define BUFSIZE 8096
-#define ERROR	42
-#define LOG	44
+#define ERROR 42
+#define LOG 44
 #define FORBIDDEN 403
-#define NOTFOUND	404
+#define NOTFOUND 404
 #ifndef SIGCLD
-#	define SIGCLD SIGCHLD 
+# define SIGCLD SIGCHLD 
 #endif
 
 #define SEM_NAME "sem_example" 
 #define SHM_NAME "mmap_example"
-
-
-
-struct {
+struct
+{
 char *ext;
  char *filetype;
 } extensions [] = {
@@ -47,7 +45,6 @@ char *ext;
 {"html","text/html" },
 {0,0} };
 
-
 typedef struct
 {
     int hit;
@@ -57,25 +54,23 @@ typedef struct
 void *tmpargv;
 void logger(int type, char *s1, char *s2, int socket_fd)
 {
-
     int fd ;
     char logbuffer[BUFSIZE*2];
-
-	
-    switch (type) {
+    switch (type)
+    {
         case ERROR: 
-            (void)sprintf(logbuffer,"ERROR: %s:%s Errno=%d exiting pid=%d",s1, s2, errno,getpid()); 
+            (void)sprintf(logbuffer,"ERROR: %s:%s Errno=%d exiting pid=%d",s1, s2,errno,getpid()); 
             break;
         case FORBIDDEN:
-            (void)write(socket_fd, "HTTP/1.1 403 FORBIDDEN\nContent-Length: 185\nConnection: close\nContent-Type:	text/html\n\n<html><head>\n<title>403 FORBIDDEN</title>\n</head><body>\n<h1>FORBIDDEN</h1>\nThe requested URL, file type or operation is not allowed on this simple static file webserver.\n</body></html>\n",271);
+            (void)write(socket_fd, "HTTP/1.1 403 Forbidden\nContent-Length: 185\nConnection:close\nContent-Type: text/html\n\n<html><head>\n<title>403 Forbidden</title>\n</head><body>\n<h1>Forbidden</h1>\nThe requested URL, file type or operation is not allowed on this simple static file webserver.\n</body></html>\n",271);
             (void)sprintf(logbuffer,"FORBIDDEN: %s:%s",s1, s2); 
             break;
         case NOTFOUND:
-            (void)write(socket_fd, "HTTP/1.1 404 Not Found\nContent-Length: 136\nConnection: close\nContent-Type:	text/html\n\n<html><head>\n<title>404	Not Found</title>\n</head><body>\n<h1>Not Found</h1>\nThe requested URL was not found on this server.\n</body></html>\n",224);
+            (void)write(socket_fd, "HTTP/1.1 404 Not Found\nContent-Length: 136\nConnection: close\nContent-Type: text/html\n\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\nThe requested URL was not found on this server.\n</body></html>\n",224);
             (void)sprintf(logbuffer,"NOT FOUND: %s:%s",s1, s2); 
             break;
         case LOG: 
-			(void)sprintf(logbuffer,"INFO: %s:%s:%d",s1, s2,socket_fd); 
+			(void)sprintf(logbuffer," INFO: %s:%s:%d",s1, s2,socket_fd); 
 			break;
     }
 
@@ -94,33 +89,36 @@ void logger(int type, char *s1, char *s2, int socket_fd)
 	/*===================================*/
 
     /* No checks here, nothing can be done with a failure anyway */
-    if((fd = open("webserver.log", O_CREAT| O_WRONLY | O_APPEND,0644)) >= 0) { 
-		(void)write(fd,logbuffer,strlen(logbuffer));
-	    (void)write(fd,"\n",1); 
+    if((fd = open("webserver.log", O_CREAT| O_WRONLY | O_APPEND,0644)) >= 0)
+    { 
+		(void)write(fd,logbuffer,strlen(logbuffer)); (void)write(fd,"\n",1); 
 		(void)close(fd);
     }
-    if(type == ERROR || type == NOTFOUND || type == FORBIDDEN) exit(3);
+    //if(type == ERROR || type == NOTFOUND || type == FORBIDDEN) exit(3);
 }
 
 double socketRead = 0.0, socketWrite = 0.0, logtime = 0.0, readhtml = 0.0;
 
 /* this is a child web server process, so we can exit on errors */ 
-void* web(void* data)
+void* web(void * data)
 {
     struct timeval t0, t1, t2, t3;
-    int fd; int hit;
+    int fd;
+    int hit;
 
-    webparam *param=(webparam*) data;
-    fd=param->fd;
-    hit=param->hit;
     
     double tmptime = 0.0;
-    int j, file_fd, buflen; long i, ret, len; char * fstr;
-    static char buffer[BUFSIZE+1]; /* static so zero filled */
+    int j, file_fd, buflen; 
+    long i, ret, len; 
+    char * fstr;
+    char buffer[BUFSIZE+1]; /* static so zero filled */
+    webparam *param = (webparam*)data;
+    fd=param->fd;
+    hit=param->hit;
 
     /*===========================read socket=================================*/
     gettimeofday(&t0, NULL);
-    ret =read(fd,buffer,BUFSIZE);	/* read Web request in one go */ 
+    ret =read(fd,buffer,BUFSIZE); /* read web request in one go */ 
     gettimeofday(&t1, NULL);
     tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
     socketRead += tmptime;
@@ -128,99 +126,80 @@ void* web(void* data)
     /*==============================log=========================================*/
     gettimeofday(&t0, NULL);
 
-    if(ret == 0 || ret == -1) { /* read failure stop now */
+    if(ret == 0 || ret == -1)  /* read failure stop now */
         logger(FORBIDDEN,"failed to read browser request","",fd);
-    }
-    if(ret > 0 && ret < BUFSIZE) /* return code is valid chars */ 
-        buffer[ret]=0;	/* terminate the buffer */
-    else 
-        buffer[0]=0;
-
-
+    else
+    {
+        if(ret > 0 && ret < BUFSIZE) /* return code is valid chars */ 
+            buffer[ret]=0; /* terminate the buffer */
+        else buffer[0]=0;
+        for(i=0;i<ret;i++) /* remove cf and lf characters */ 
+            if(buffer[i] == '\r' || buffer[i] == '\n')
+                buffer[i]='*'; 
+        logger(LOG,"request",buffer,hit);
+        if( strncmp(buffer,"GET ",4) && strncmp(buffer,"get ",4) ) 
+            logger(FORBIDDEN,"only simple GET operation supported",buffer,fd);
+        for(i=4;i<BUFSIZE;i++) 
+        { /* null terminate after the second space to ignore extra stuff */ 
+            if(buffer[i] == ' ') 
+            { /* string is "get url " +lots of other stuff */
+                buffer[i] = 0;
+                break;
+            }
+        }
+        for(j=0;j<i-1;j++) /* check for illegal parent directory use .. */ 
+        if(buffer[j] == '.' && buffer[j+1] == '.') 
+            logger(FORBIDDEN,"parent directory (..) path names not supported",buffer,fd);        
+        if( !strncmp(&buffer[0],"GET /\0",6) || !strncmp(&buffer[0],"get /\0",6) ) /* convert no filename to index file */
+            (void)strcpy(buffer,"GET /index.html");
+        gettimeofday(&t1, NULL);
+        tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
+        logtime += tmptime;
+        /* work out the file type and check we support it */ 
+        buflen=strlen(buffer);
+        fstr = (char *)0; 
+        for(i=0;extensions[i].ext != 0;i++) 
+        {
+            len = strlen(extensions[i].ext);
+            if( !strncmp(&buffer[buflen-len], extensions[i].ext, len)) 
+            { 
+                fstr =extensions[i].filetype;
+                break;
+            }
+        }
+        if(fstr == 0)
+            logger(FORBIDDEN,"file extension type not supported",buffer,fd);
+        if(( file_fd = open(&buffer[5],O_RDONLY)) == -1) /* open the file for reading */ 
+            logger(NOTFOUND, "failed to open file",&buffer[5],fd);
+    /*==============================log=========================================*/
+        gettimeofday(&t0, NULL);
+        logger(LOG,"SEND",&buffer[5],hit);
+        len = (long)lseek(file_fd, (off_t)0, SEEK_END); /* 使用 lseek 来获得文件长度，比较低效*/
+        (void)lseek(file_fd, (off_t)0, SEEK_SET); /* 想想还有什么方法来获取*/
+        (void)sprintf(buffer,"HTTP/1.1 200 ok\nserver: nweb/%d.0\ncontent-length: %ld\nconnection: close\ncontent-type: %s\n\n", VERSION, len, fstr); /* header + a blank line */ 
+        logger(LOG,"Header",buffer,hit);
+        gettimeofday(&t1, NULL);
+        tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
+        logtime += tmptime;
         
-    for(i=0;i<ret;i++) /* remove CF and LF characters */ 
-        if(buffer[i] == '\r' || buffer[i] == '\n')
-            buffer[i]='*'; 
+        /*===========================write socket=================================*/
+        gettimeofday(&t0, NULL);
+        (void)write(fd,buffer,strlen(buffer));
+        gettimeofday(&t1, NULL);
+        tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
+        socketWrite += tmptime;
 
-    logger(LOG,"request",buffer,hit);
-    if( strncmp(buffer,"GET ",4) && strncmp(buffer,"get ",4) ) 
-    { 
-        logger(FORBIDDEN,"Only simple GET operation supported",buffer,fd);
+
+    /* send file in 8KB block - last block may be smaller */ 
+        gettimeofday(&t0, NULL);
+        while ( (ret = read(file_fd, buffer, BUFSIZE)) > 0 ) 
+            (void)write(fd,buffer,ret);
+        gettimeofday(&t1, NULL);
+        tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec);
+        readhtml += tmptime;
+        usleep(10000); /* allow socket to drain before signalling the socket is closed */ 
+        close(file_fd);
     }
-    for(i=4;i<BUFSIZE;i++) { /* null terminate after the second space to ignore extra stuff */ 
-        if(buffer[i] == ' ') 
-        { /* string is "GET URL " +lots of other stuff */
-            buffer[i] = 0; break;
-        }
-    }
-    for(j=0;j<i-1;j++)	/* check for illegal parent directory use .. */ 
-    if(buffer[j] == '.' && buffer[j+1] == '.') 
-    {
-        logger(FORBIDDEN,"Parent directory (..) path names not supported",buffer,fd);
- 
-    }
-    if( !strncmp(&buffer[0],"GET /\0",6) || !strncmp(&buffer[0],"get /\0",6) ) 
-        (void)strcpy(buffer,"GET /index.html");
- 
-    gettimeofday(&t1, NULL);
-    tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
-    logtime += tmptime;
-    
-
-    /* work out the file type and check we support it */ 
-    buflen=strlen(buffer);
-    fstr = (char *)0; 
-    for(i=0;extensions[i].ext != 0;i++) 
-    {
-        len = strlen(extensions[i].ext);
-        if( !strncmp(&buffer[buflen-len], extensions[i].ext, len)) 
-        { 
-            fstr =extensions[i].filetype;
-            break;
-        }
-    }
-    if(fstr == 0) logger(FORBIDDEN,"file extension type not supported",buffer,fd);
-
-    if(( file_fd = open(&buffer[5],O_RDONLY)) == -1) 
-    { /* open the file for reading */ 
-        logger(NOTFOUND, "failed to open file",&buffer[5],fd);
-    }
-
-/*==============================log=========================================*/
-    gettimeofday(&t0, NULL);
-    logger(LOG,"SEND",&buffer[5],hit);
-    
-    
-
-    len = (long)lseek(file_fd, (off_t)0, SEEK_END); /* lseek to the file end to find the length */ 
-    (void)lseek(file_fd, (off_t)0, SEEK_SET); /* lseek back to the file start ready for reading */
-    (void)sprintf(buffer,"HTTP/1.1 200 OK\nServer: nweb/%d.0\nContent-Length: %ld\nConnection: \
-    close\nContent-Type: %s\n\n", VERSION, len, fstr); /* Header + a blank line */ 
-
-   
-    logger(LOG,"Header",buffer,hit);
-    gettimeofday(&t1, NULL);
-    tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
-    logtime += tmptime;
-    
-    /*===========================write socket=================================*/
-    gettimeofday(&t0, NULL);
-    (void)write(fd,buffer,strlen(buffer));
-    gettimeofday(&t1, NULL);
-    tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec); 
-    socketWrite += tmptime;
-
-
-/* send file in 8KB block - last block may be smaller */ 
-    gettimeofday(&t0, NULL);
-    while ((ret = read(file_fd, buffer, BUFSIZE)) > 0) 
-    {
-        (void)write(fd,buffer,ret);
-    }
-    gettimeofday(&t1, NULL);
-    tmptime = (t1.tv_sec - t0.tv_sec)*1e6 + (t1.tv_usec - t0.tv_usec);
-    readhtml += tmptime;
-    sleep(1); /* allow socket to drain before signalling the socket is closed */ 
     close(fd);
    // exit(1);
    
