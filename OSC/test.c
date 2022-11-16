@@ -6,26 +6,26 @@ using namespace std;
 
 int main()
 {
-    int p1;
-    while((p1 = fork()) == -1);
-    if(p1 == 0)
-    {
-        /*子进程*/
-        int i = 0;
-        printf("p1 sleep\n");
-        while(1){
-            printf("%d..\n", i++);
-        }
-    }
-    else{
-        /*父进程*/
-        printf("go to parent\n");
-        while(1){
-            for(int i = 1; i <= 1000000; i++)
-                printf("a\n");
-            sleep(1);
-            for(int i = 1; i <= 1000000; i++)
-                cout << 'b' << endl;
-        }
-    }
+    int p1;
+    while((p1=fork())==-1);
+    if(p1==0)
+    {
+    /*子进程*/
+    int i=0;
+    printf("p1sleep\n");
+        while(1){
+            printf("%d..\n",i++);
+        }
+    }
+    else{
+    /*父进程*/
+    printf("gotoparent\n");
+    while(1){
+        for(inti=1;i<=1000000;i++)
+        printf("a\n");
+        sleep(1);
+        for(inti=1;i<=1000000;i++)
+            cout<<'b'<<endl;
+        }
+    }
 }
