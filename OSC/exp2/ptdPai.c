@@ -5,7 +5,7 @@
 #include <sys/time.h>
 #include <pthread.h>
 
-const int N = 20000;
+const int N = 30000;
 
 int inCircle = 0;
 int range = 2.0;
@@ -32,12 +32,10 @@ int main()
 	srand((unsigned int)time(NULL));
 
 	struct timeval t0,t1;
-	gettimeofday(&t0, NULL);
 	for(int i = 0; i < total; i++)
 	{
 		pthread_create(&threads[i], NULL, runner, NULL);		
 	}
-	gettimeofday(&t1, NULL);
 
 	for(int i = 0; i < total; i++)
 	{
@@ -45,8 +43,12 @@ int main()
 	}
 
 
+
+
+
+
 	double time = (t1.tv_sec - t0.tv_sec);
-	printf("PAI:%f time:%f\n",4*inCircle/(1.0*total), time);
+	printf("PAI:%f time:\n",4*inCircle/(1.0*total));
 
 	return 0;
 }
