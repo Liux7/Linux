@@ -15,6 +15,8 @@ int allocation[NUMBER_OF_CUSTOMERS][NUMBER_OF_RESOURCES];
 
 int need[NUMBER_OF_CUSTOMERS][NUMBER_OF_RESOURCES];
 
+pthread_mutex_t readmutex, writemutex, buffmutex;
+
 bool nogreater(int *a, int *b, int n)
 {
     for (int i = 0; i < n; i++)
@@ -34,19 +36,27 @@ bool isSafe()
 
     while (1)
     {
+        int flag = 1;
         for (int i = 0; i < NUMBER_OF_CUSTOMERS; i++)
         {
             if(finish[i] == false && nogreater(need, work, NUMBER_OF_RESOURCES))
             {
-                for (int i = 0; i < NUMBER_OF_RESOURCES; i++)
+                for (int j = 0; j < NUMBER_OF_RESOURCES; j++)
                 {
-                    
+                    work[j] += allocation[i][j];
+                    finish[i] = true;
                 }
-                
+                flag = 0;
             }
         }
+        if(flag) break;
         
     }
+    for(int i = 0; i < NUMBER_OF_CUSTOMERS; i++)
+    {
+        if(finish[i] == false) return false;
+    }
+    return true;
     
 
 }
@@ -54,11 +64,30 @@ bool isSafe()
 
 int request_resources(int customer_num, int request[])
 {
+    if(!nogreater(request, need[customer_num], NUMBER_OF_CUSTOMERS)) return -1;
+    if(!nogreater(request, available[customer_num], NUMBER_OF_CUSTOMERS)) return -1;
 
+    for(int i = 0; i < NUMBER_OF_RESOURCES; i++) available[i] -= request[i];
+    for(int i = 0; i < NUMBER_OF_RESOURCES; i++) allocation[customer_num][i] += request[i];
+    for(int i = 0; i < NUMBER_OF_RESOURCES; i++) need[customer_num][i] -= request[i];
+
+    if(isSafe()) return 0;
+    else
+    {
+        for(int i = 0; i < NUMBER_OF_RESOURCES; i++) available[i] += request[i];
+        for(int i = 0; i < NUMBER_OF_RESOURCES; i++) allocation[customer_num][i] -= request[i];
+        for(int i = 0; i < NUMBER_OF_RESOURCES; i++) need[customer_num][i] += request[i];
+        return -1;
+    }
+    
 }
 
 int release_resources(int customer_num, int release[])
 {
+    for(int i = 0; i < NUMBER_OF_RESOURCES; i++) available[i] += release[i];
+    for(int i = 0; i < NUMBER_OF_RESOURCES; i++) allocation[customer_num][i] -= release[i];
+    for(int i = 0; i < NUMBER_OF_RESOURCES; i++) need[customer_num][i] += release[i];
+    return 0;
 
 }
 
@@ -86,7 +115,8 @@ void initmaximum()
 {
     
 }
-pthread_mutex_t readmutex, writemutex, buffmutex;
+
+
 
 int main(int argc, char** argv)
 {
