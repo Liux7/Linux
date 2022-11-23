@@ -116,7 +116,10 @@ bool isSafe()
 
 int request_resources(int customer_num, int request[])
 {
-    if(!nogreater(request, need[customer_num], NUMBER_OF_RESOURCES)) return -4;
+    printRequest(request);
+    printNeed(customer_num);
+
+    if(!nogreater(request, need[customer_num], NUMBER_OF_RESOURCES)) return -1;
     if(!nogreater(request, available, NUMBER_OF_RESOURCES)) return -2;
 
     for(int i = 0; i < NUMBER_OF_RESOURCES; i++) available[i] -= request[i];
@@ -129,7 +132,7 @@ int request_resources(int customer_num, int request[])
         for(int i = 0; i < NUMBER_OF_RESOURCES; i++) available[i] += request[i];
         for(int i = 0; i < NUMBER_OF_RESOURCES; i++) allocation[customer_num][i] -= request[i];
         for(int i = 0; i < NUMBER_OF_RESOURCES; i++) need[customer_num][i] += request[i];
-        return -1;
+        return -3;
     }
     
 }
@@ -147,52 +150,45 @@ void working()
 {
     sleep(1);
 }
-
+int cnt = 0;
 void* customer(void* data)
 {
     int id = *(int*)data;
     while (1)
     {
-        printf("=======start a new request from pid=%d==========\n",id);
+        cnt++;
+        
         int request[NUMBER_OF_RESOURCES];
-        for (int i = 0; i < NUMBER_OF_RESOURCES; i++)
-        {
-            
-            request[i] = rand() % CEIL;
-        }
-
-        printRequest(request);
-
-        printNeed(id);
-
+        for (int i = 0; i < NUMBER_OF_RESOURCES; i++)   request[i] = rand() % CEIL;
 
         int res = 0;
-        
         pthread_mutex_lock(&requestMutex);
-        // printf("id:%d",id);
-        printf("bef work ");AvailableInfo();
+        
+        printf("=======start a new request from pid=%d==========\n",id);
+        printf("  bef work ");AvailableInfo();
+
         res = request_resources(id, request);
 
-        // printf("==%d==\n",res);
-        pthread_mutex_unlock(&requestMutex);
+        if(res == 0)
+        {
+            printf("  now work ");AvailableInfo(); 
+        }
 
+        if(res == 0) 
+            printf("=======a request compelet (<safe>) ============!\n\n");
+        else  
+            printf("=====a request NO compelet (no safe %d) =======\n\n",res);    
+        
+        pthread_mutex_unlock(&requestMutex);
 
         working();
         
-        if(res != 0)
-        {
-            printf("=======a request NO compelet (no safe) ========\n\n");    
-            continue;
-        }
+        if(res != 0) continue;
+        
 
         pthread_mutex_lock(&releaseMutex);
-        printf("working "  );AvailableInfo();
         release_resources(id, request);
-        printf("aft work ");AvailableInfo();
         pthread_mutex_unlock(&releaseMutex);
-        printf("=======a request compelet (safe) ===============\n\n");
-        // printf("=======start a new request from%d===============\n",id);
-        
     }
 
 }
@@ -216,6 +212,7 @@ int main(int argc, char** argv)
     }
     for (int i = 0; i < NUMBER_OF_CUSTOMERS; i++)
     {
+        printf("need[%d]:",i);
         for(int j = 0; j < NUMBER_OF_RESOURCES; j++)
         {
             printf("%d ",need[i][j] );
@@ -258,7 +255,7 @@ int main(int argc, char** argv)
         *para = i;
         if(pthread_create(&pth[i], NULL, customer,(void*)para) == 0)
         {
-            printf("customer %d enter!\n",i);
+            // printf("customer %d enter!\n",i);
         }
         else
         {
