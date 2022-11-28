@@ -30,10 +30,21 @@ v5_webserver.c
 
 v6_webserver_threadpool.c 
 
-  exp4, add threadpool, pay attention to its compile
+  exp4, add threadpool, pay attention to its compile, "make ptdpl"
 
 v7_webserver.c 
 
-  exp5, business segmentation model, add readmsg threadpool, readfile threadpool, sendmsg threadpool, filename queue, msg queue.
+  exp5, business segmentation model, add readmsg threadpool, readfile threadpool, sendmsg threadpool, filename queue, msg queue. "make multiptdpl"
 
 2022/11/10
+
+v8_webserver.c
+
+  bad code, the hash can't work well with write(), "make cache"
+
+v9_webserver.c
+
+  there is file cache, get File By LFU, get File By LRU, "make cache2"
+
+
+
