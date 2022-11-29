@@ -240,18 +240,23 @@ void freeHashTable(hashtable* table)  //释放哈希表
 /* 前提：调用者已获得锁 */
 content* getContentByKey(hashtable* table, char* key)
 {
-	/*printf("getcontentbykey\n"); */
 	int hash = hashString(key) % (table->num_bucket);
 	int num = 0;
 	hashpair* pair = table->bucket[hash];
+	printf("finding\n");
 	while (pair && num < 10)
 	{
-		printf("%s %d %d %s\n", pair->key, pair->times, hash, key);
+		printf("curKey=%s visitNum=%d hashVal=%d objKey=%s\n", pair->key, pair->times, hash, key);
 		if (0 == strcmp(pair->key, key))
+		{
+			pair->times++;
+			printf("find it\n");
 			return pair->cont;
+		}
 		pair = pair->next;
 		num++;
 	}
+	printf("find fail\n");
 	return NULL;
 }
 
@@ -324,9 +329,9 @@ content* getFileByFIFO(hashtable* table, char* key)  //key==f->fn
 	content* cont = readFile2(key);    //读取key文件的内容
 	// 统计
 	int l = get_bucket_length(table->bucket[hash]);  //哈希表长
-	printf("daozhelile\n");
+	printf("the key haven't content\n");
 	// 删除末尾pair
-	if (l == NUM_OF_PAIR) {
+	if (l == NUM_OF_PAIR) { // full 
 		hashpair* prev = NULL;
 		while (pair->next != NULL) {
 			prev = pair;
@@ -345,35 +350,36 @@ content* getFileByFIFO(hashtable* table, char* key)  //key==f->fn
 	pair = (hashpair*)malloc(sizeof(hashpair));
 	pair->key = copystring(key);
 	pair->cont = cont;
+	pair->times = 0;
 	pair->next = table->bucket[hash];	// 头插法
 	table->bucket[hash] = pair;
-	printf("%d %d %f\n", table->num_pagefault, table->num_ttlreq, (float)table->num_pagefault / (float)table->num_ttlreq);
+	printf("pageFaultNum=%d requestNum=%d rate=%f\n", table->num_pagefault, table->num_ttlreq, (float)table->num_pagefault / (float)table->num_ttlreq);
 	return cont;
 }
 
 /* 使用前提：调用者已加锁 */
-void movePairToHead(hashtable* table, char* key)
-{
-	int hash = hashString(key) % (table->num_bucket);
-	hashpair* pair = table->bucket[hash];
-	// 不用移动
-	if (!strcmp(key, pair->key)) {
-		return;
-	}
-	// 找到位置、连接断裂处、头插
-	hashpair* prev = NULL;
-	while (pair->next != NULL)
-	{
-		if (!strcmp(pair->key, key)) {
-			break;
-		}
-		prev = pair;
-		pair = pair->next;
-	}
-	prev->next = pair->next;
-	pair->next = table->bucket[hash];
-	table->bucket[hash] = pair;
-}
+// void movePairToHead(hashtable* table, char* key)
+// {
+// 	int hash = hashString(key) % (table->num_bucket);
+// 	hashpair* pair = table->bucket[hash];
+// 	// 不用移动
+// 	if (!strcmp(key, pair->key)) {
+// 		return;
+// 	}
+// 	// 找到位置、连接断裂处、头插
+// 	hashpair* prev = NULL;
+// 	while (pair->next != NULL)
+// 	{
+// 		if (!strcmp(pair->key, key)) {
+// 			break;
+// 		}
+// 		prev = pair;
+// 		pair = pair->next;
+// 	}
+// 	prev->next = pair->next;
+// 	pair->next = table->bucket[hash];
+// 	table->bucket[hash] = pair;
+// }
 
 content* getFileByLRU(hashtable* table, char* key)
 {
@@ -392,7 +398,7 @@ content* getFileByLRU(hashtable* table, char* key)
 	if (tmp) {  //有
 		printf("cache has\n");
 		if (!strcmp(key, pair->key)) {  //第一个就是
-			printf("%d %d %f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
+			printf("pageFaultNum=%d requestNum=%d hitRate=%f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
 			gettimeofday(&end, NULL);   //要退出，计时结束
 			pthread_mutex_lock(&sendlock);
 			timeuse = (end.tv_sec - start.tv_sec) * 1000000.0 + end.tv_usec - start.tv_usec;
@@ -412,9 +418,11 @@ content* getFileByLRU(hashtable* table, char* key)
 			pair = pair->next;
 		}
 		prev->next = pair->next;
-		pair->next = table->bucket[hash];
+		pair->next = table->bucket[hash]; // move to head to achieve LRU
 		table->bucket[hash] = pair;
-		printf("%d %d %f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
+
+		printf("pageFaultNum=%d requestNum=%d hitRate=%f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
+
 		gettimeofday(&end, NULL);  //计时结束
 		pthread_mutex_lock(&sendlock);
 		timeuse = (end.tv_sec - start.tv_sec) * 1000000.0 + end.tv_usec - start.tv_usec;
@@ -446,7 +454,7 @@ content* getFileByLRU(hashtable* table, char* key)
 	pair->cont = cont;
 	pair->next = table->bucket[hash];
 	table->bucket[hash] = pair;
-	printf("%d %d %f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
+	printf("pageFaultNum=%d requestNum=%d hitRate=%f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
 	gettimeofday(&end, NULL);  //计时结束
 	pthread_mutex_lock(&sendlock);
 	timeuse = (end.tv_sec - start.tv_sec) * 1000000.0 + end.tv_usec - start.tv_usec;
@@ -472,12 +480,13 @@ content* getFileByLFU(hashtable* table, char* key)
 	hashpair* pair = table->bucket[hash];
 	hashpair* cur = NULL;
 	if (tmp) {    //找到了
+		printf("cache have\n");
 		if (!strcmp(key, pair->key)) {
 			pair->times++;
-			printf("%d %d %f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
+			printf("pageFaultNum=%d requestNum=%d hitRate=%f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
 			printf("%s\n", key);
-			/*__sync_synchronize();
-			table->locks[hash] = 0;*/
+			// __sync_synchronize();
+			// table->locks[hash] = 0;
 			gettimeofday(&end, NULL);
 			pthread_mutex_lock(&sendlock);
 			timeuse = (end.tv_sec - start.tv_sec) * 1000000.0 + end.tv_usec - start.tv_usec;
@@ -498,7 +507,6 @@ content* getFileByLFU(hashtable* table, char* key)
 			pair = pair->next;
 		}
 		prev->next = pair->next;
-		printf("cache have\n");
 		while (p->times > pair->times && p) {   //缓存里有，从头往后找
 			q = p;              //由于此节点times（次数）加一，所以要往前插入，这两行是找该插到哪里
 			p = p->next;
@@ -507,9 +515,11 @@ content* getFileByLFU(hashtable* table, char* key)
 		if (q) q->next = pair;     //次数大的往前排
 		else table->bucket[hash] = pair;
 		/*printf("%s\n", key); */
-		printf("%d %d %f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
+		printf("pageFaultNum=%d requestNum=%d hitRate=%f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
 		/*__sync_synchronize();
 		table->locks[hash] = 0;*/
+
+
 		gettimeofday(&end, NULL);
 		pthread_mutex_lock(&sendlock);
 		timeuse = (end.tv_sec - start.tv_sec) * 1000000.0 + end.tv_usec - start.tv_usec;
@@ -517,6 +527,7 @@ content* getFileByLFU(hashtable* table, char* key)
 		avg = sum / (double)table->num_ttlreq;
 		printf("Average time is %lf\n", avg);
 		pthread_mutex_unlock(&sendlock);
+
 		return tmp;
 	}
 	// 缺页
@@ -539,7 +550,7 @@ content* getFileByLFU(hashtable* table, char* key)
 		}
 		else { //有节点了，尾插
 			while (pair->next != NULL && num <= 10) {
-				printf("meimanelse %s %d %s\n", pair->key, pair->times, key);
+				printf("curKey=%s visitNum=%d objKey=%s\n", pair->key, pair->times, key);
 				pair = pair->next;
 				num++;
 			}
@@ -554,8 +565,8 @@ content* getFileByLFU(hashtable* table, char* key)
 		char* rem = NULL;
 		hashpair* p = head, * q = NULL, * pre = NULL, * pr = NULL;
 		if (p->next) rem = p->next->key;
-		while (p->next != NULL) {   //垃圾堆里面找有没有当前key值页面cur
-			if (!strcmp(p->key, key)) {  //若在垃圾堆链表里找到了，则这里就结束循环
+		while (p->next != NULL) {   //垃圾堆(head)里面找有没有当前key值页面cur
+			if (!strcmp(p->key, key)) {  //若在垃圾堆(head)链表里找到了，则这里就结束循环
 				show = 1;
 				p->times++;     //次数加一，因为此时正在访问该节点的内容
 				pnum = p->times;
@@ -563,10 +574,10 @@ content* getFileByLFU(hashtable* table, char* key)
 			}
 			q = p;
 			p = p->next;
-			printf("head %s %d %s\n", p->key, p->times,rem);  //输出，能看到垃圾堆链表里的次数
+			printf("head %s %d %s\n", p->key, p->times,rem);  //输出，能看到垃圾堆(head)链表里的次数
 		}
-		if (show) {          //历史记录里有这个页面，p就是cur
-			printf("youyemian\n");
+		if (show) {          //head里有这个页面，p就是cur
+			
 			while (pair->next != NULL && num < 10) {  //在哈希链表里找到最后一个点
 				pr = pair;
 				pair = pair->next;
@@ -581,7 +592,7 @@ content* getFileByLFU(hashtable* table, char* key)
 					pre = q;
 					q = q->next;
 				}
-				//将pair(原哈希表中的）插入垃圾堆列表
+				//将pair(原哈希表中的）插入垃圾堆(head)
 				/*pr->next = NULL; */
 				pair->next = q;
 				if (pre) pre->next = pair;
@@ -589,21 +600,16 @@ content* getFileByLFU(hashtable* table, char* key)
 
 				pair = table->bucket[hash]->next;
 				num = 0;
-				while (pair->times > p->times && pair->next && num < 10) {  //找到垃圾堆链表中的点（当前访问页）
-					                                                       //该插到哈希表中的哪里，按次数降序排解
-					pr = pair;
+				while (pair->times > p->times && pair->next && num < 10) {  // find pair到垃圾堆链表中的点（当前访问页）
 					pair = pair->next;
 					num++;
-					/*printf("manleshow %s %d %s\n", pair->key, pair->times, key);*/
 				}
-				/*printf("found2222222222\n"); */
-				pr->next = p;    //将当前页面放入哈希表，当作缓存里的元素
+				pr->next = p;    //将当前页面放入head，作缓存
 				p->next = pair;
 			}
 			else {    //当前页面访问次数太少，不能放入
 				p = head;
 				while (p->times > cur->times && p->next) {  //插入垃圾堆链表，找该插到哪里
-					printf("can't put111111111\n");
 					q = p;
 					p = p->next;
 				}
@@ -622,7 +628,7 @@ content* getFileByLFU(hashtable* table, char* key)
 		table->num_pagefault++;  //最后缺页加一
 	}
 	printf("%s\n", key);
-	printf("%d %d %f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
+	printf("pageFaultNum=%d requestNum=%d hitRate=%f\n", table->num_pagefault, table->num_ttlreq, 1 - (float)table->num_pagefault / (float)table->num_ttlreq);
 	gettimeofday(&end, NULL);
 	pthread_mutex_lock(&sendlock);
 	timeuse = (end.tv_sec - start.tv_sec) * 1000000.0 + end.tv_usec - start.tv_usec;
@@ -632,7 +638,7 @@ content* getFileByLFU(hashtable* table, char* key)
 	pthread_mutex_unlock(&sendlock);
 	/*__sync_synchronize();
 	table->locks[hash] = 0;*/
-	return cont;
+	return cont; // this content can't enter cache
 }
 
 void push_taskqueue(taskqueue* queue, task* curTask) {
@@ -657,7 +663,7 @@ void push_taskqueue(taskqueue* queue, task* curTask) {
 }
 
 void sendFile(void* msg2) {
-	printf("sendfile\n");
+	// printf("sendfile\n");
 	msg* m = (msg*)msg2;
 	write(m->fd, m->fc, m->len);
 
@@ -683,8 +689,17 @@ void readFile(void* file)
 
 	msg* m = malloc(sizeof(msg));
 	m->fd = f->fd;
-	/*printf("before LFU\n"); */
+
+	printf("\n<====getFileByHash=====\n");
+
+	printf("using LFU\n"); 
+	// printf("using LRU\n"); 
+	// printf("using FIFO\n"); 
+
 	m->fc = getFileByLFU(f->app->table, f->fn)->address;
+	// m->fc = getFileByLRU(f->app->table, f->fn)->address;
+	// m->fc = getFileByFIFO(f->app->table, f->fn)->address;
+	printf("=====getFileByHash====>\n");
 	m->len = len;
 
 	free(f->fn);
