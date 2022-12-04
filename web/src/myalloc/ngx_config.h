@@ -85,28 +85,6 @@ extern char **environ;
 #endif
 
 
-#if (NGX_FREEBSD)
-#include <ngx_freebsd_config.h>
-
-
-#elif (NGX_LINUX)
-#include <ngx_linux_config.h>
-
-
-#elif (NGX_SOLARIS)
-#include <ngx_solaris_config.h>
-
-
-#elif (NGX_DARWIN)
-#include <ngx_darwin_config.h>
-
-
-#elif (NGX_WIN32)
-#include <ngx_win32_config.h>
-
-
-#else /* POSIX */
-// #include <ngx_posix_config.h>
 
 #endif
 
@@ -209,4 +187,4 @@ typedef intptr_t        ngx_flag_t;
 #endif
 
 
-#endif /* _NGX_CONFIG_H_INCLUDED_ */
+

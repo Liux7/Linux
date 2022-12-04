@@ -1,12 +1,12 @@
 bin = ./bin
-obj = $(bin)/ngx_palloc.o $(bin)/ngx_alloc.o 
+obj = ngx_palloc.o ngx_alloc.o 
 inc = ./
 dep = ngx_core.h ngx_config.h
 
-all: test.o 
-	gcc $(bin)/$^ $(obj) -o $(bin)test -I$(inc)
+all: test.o $(obj)
+	gcc $(bin)/test.o $(bin)/ngx_alloc.o $(bin)/ngx_palloc.o -o $(bin)/test -I$(inc)
 
-test.o: test.c $(obj)
+test.o: test.c 
 	gcc -c test.c -I$(inc) -o $(bin)/$@
 
 ngx_palloc.o: ngx_palloc.h $(dep)
