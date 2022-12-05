@@ -46,5 +46,11 @@ v9_webserver.c
 
   there is file cache, get File By LFU, get File By LRU, "make cache2"
 
+2022/12/5
+
+timeTest.c
+
+  compare my malloc(Nginx) with stdlib malloc. it's makefile in ./myalloc and rename it test.c before compile it.
+
 
 

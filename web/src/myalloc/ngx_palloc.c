@@ -122,12 +122,14 @@ ngx_reset_pool(ngx_pool_t *pool)
 void *
 ngx_palloc(ngx_pool_t *pool, size_t size)
 {
+        // printf("%ld\n", pool->max);
 #if !(NGX_DEBUG_PALLOC)
     if (size <= pool->max) {
+        // printf("small palloc\n");
         return ngx_palloc_small(pool, size, 1);
     }
 #endif
-
+    // printf("large palloc\n");
     return ngx_palloc_large(pool, size);
 }
 
