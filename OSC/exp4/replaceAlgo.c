@@ -27,6 +27,7 @@ void genRandomPageRefer(int* array, int size)
 typedef struct LinkNode
 {
     int data;
+    int refer;
     struct LinkNode *next;
 } Node;
 typedef struct LinkList
@@ -45,6 +46,22 @@ Node* findNode(list* queue, int pageNum)
             return p;
         }
         p = p->next;
+    }
+    return NULL;
+}
+
+Node* findNodeClock(list* queue, int pageNum)
+{
+    Node* p = queue->head->next;
+    Node* front = p;
+    while (p != NULL)
+    {
+        if(p->data == pageNum)
+        {
+            return p;
+        }
+        p = p->next;
+        if(p == front) break;
     }
     return NULL;
 }
@@ -175,6 +192,20 @@ void debugLRU(list* queue, int* recent)
     printf("\n");
 }
 
+void debugClock(list* queue)
+{
+    printf("head->");
+    if(queue->head->next == NULL) return;
+    Node* p = queue->head->next->next;
+    Node* front = p;
+    while(p != NULL)
+    {
+        printf("%d(%d)->", p->data, p->refer);
+        p = p->next;
+        if(p == front) break;
+    }
+    printf("\n");
+}
 
 list* createList()
 {
@@ -373,12 +404,103 @@ int getPageFaultLRU(int* pageRefer, int size)
             pushNode(queue, pageRefer[i]);
         }
         // debugLRU(queue, recent);
+        #ifdef DEBUG
         debugList(queue);
+        #endif
         recent[pageRefer[i]] = i;
     }
 
     return pageFault;
     
+}
+
+void pushNodeClock(list* queue, int pageNum)
+{
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = pageNum;
+    newNode->refer = 1;
+    if(queue->size == 0)
+    {
+        queue->head->next = newNode;
+        newNode->next = newNode;   
+    }
+    else
+    {   
+        newNode->next = queue->head->next->next;
+        queue->head->next->next = newNode;
+        queue->head->next = newNode;
+    }
+    queue->size++;
+    
+}
+
+void popNodeClock(list* queue)
+{
+    if(queue->size == 0) return;
+    if(queue->size == 1) 
+    {
+        Node* tmp = queue->head->next;
+        free(tmp);
+        return;
+    }
+    // Node* pre = queue->head;
+    Node* p = queue->head->next;
+    while(p->next->refer == 1)
+    {
+        p->next->refer = 0;
+        p = p->next;
+    }
+    Node* tmp = p->next;
+    p->next = tmp->next;
+    free(tmp);
+
+}
+
+int getPageFaultCLOCK(int* pageRefer, int size)
+{
+    int pageFault = 0;
+    list* queue = createList();
+
+    for(int i = 0; i < size; i++)
+    {
+        Node* tmp = findNodeClock(queue, pageRefer[i]);
+
+        #ifdef DEBUG  
+        printf("==============\n"); debugClock(queue); 
+        printf("now page refer:");
+        for(int j = 0; j < size; j++)
+        {
+            if(i == j) printf("[%d] ",pageRefer[j]);    
+            else printf("%d ",pageRefer[j]);
+        }
+        printf("\n");
+        #endif
+
+        if(tmp != NULL)
+        {
+            #ifdef DEBUG
+            printf("hit!\n");
+            #endif
+            tmp->refer = 1;
+        }
+        else
+        {
+            pageFault++;
+            if(queue->size >= FRAMESIZE)
+            {
+                popNodeClock(queue);
+            }     
+            
+            
+            #ifdef DEBUG
+            printf("miss!\n");
+            #endif
+            // pushNodeLRU(queue, recent, pageRefer[i]);
+            pushNodeClock(queue, pageRefer[i]);
+        }
+        
+    }
+    return pageFault;
 }
 
 int main()
@@ -387,26 +509,26 @@ int main()
     int n = 20;
     int* pageRefer = (int*)malloc(n * sizeof(int));
     genRandomPageRefer(pageRefer, n);
-    pageRefer[0] = 7;
-    pageRefer[1] = 2;
-    pageRefer[2] = 3;
-    pageRefer[3] = 1;
-    pageRefer[4] = 2;
-    pageRefer[5] = 5;
-    pageRefer[6] = 3;
-    pageRefer[7] = 4;
-    pageRefer[8] = 6;
-    pageRefer[9] = 7;
-    pageRefer[10] = 7;
-    pageRefer[11] = 1;
-    pageRefer[12] = 0;
-    pageRefer[13] = 5;
-    pageRefer[14] = 4;
-    pageRefer[15] = 6;
-    pageRefer[16] = 2;
-    pageRefer[17] = 3;
-    pageRefer[18] = 0;
-    pageRefer[19] = 1;
+    // pageRefer[0] = 7;
+    // pageRefer[1] = 2;
+    // pageRefer[2] = 3;
+    // pageRefer[3] = 1;
+    // pageRefer[4] = 2;
+    // pageRefer[5] = 5;
+    // pageRefer[6] = 3;
+    // pageRefer[7] = 4;
+    // pageRefer[8] = 6;
+    // pageRefer[9] = 7;
+    // pageRefer[10] = 7;
+    // pageRefer[11] = 1;
+    // pageRefer[12] = 0;
+    // pageRefer[13] = 5;
+    // pageRefer[14] = 4;
+    // pageRefer[15] = 6;
+    // pageRefer[16] = 2;
+    // pageRefer[17] = 3;
+    // pageRefer[18] = 0;
+    // pageRefer[19] = 1;
 
 
 
@@ -421,9 +543,11 @@ int main()
 
 
 
-    // printf("FIFO: %d Total: %d\n", getPageFaultFIFO(pageRefer, n), n);
-    // printf("OPT: %d Total: %d\n", getPageFaultOPT(pageRefer,  n), n);
-    printf("LRU: %d Total: %d\n", getPageFaultLRU(pageRefer,  n), n);
+    printf("FIFO:  %-5d Total: %d\n", getPageFaultFIFO(pageRefer, n), n);
+    printf("OPT:   %-5d Total: %d\n", getPageFaultOPT(pageRefer,  n), n);
+    printf("LRU:   %-5d Total: %d\n", getPageFaultLRU(pageRefer,  n), n);
+    printf("CLOCK: %-5d Total: %d\n", getPageFaultCLOCK(pageRefer,  n), n);
+
     
     
     
