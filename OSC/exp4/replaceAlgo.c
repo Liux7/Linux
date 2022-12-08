@@ -8,7 +8,7 @@
 #endif
 
 #ifndef PAGESIZE
-    #define PAGESIZE 20
+    #define PAGESIZE 10
 #endif 
 
 const int INF = 0x3f3f3f3f;
@@ -83,6 +83,7 @@ Node* findpreNode(list* queue, int pageNum)
 
 void popNode(list* queue)
 {
+    queue->size--;
     Node* p = queue->head;
     if(p->next != NULL)
     {
@@ -154,6 +155,7 @@ void pushNodeOpt(list* queue, list* forecast[], int pageNum)
 
 void debugList(list* queue)
 {
+    printf("size:%d ", queue->size);
     printf("head->");
     Node* p = queue->head->next;
     while(p != NULL)
@@ -181,7 +183,7 @@ void debugOPT(list* queue, list* forecast[])
 
 void debugLRU(list* queue, int* recent)
 {
-    printf("size:%d", queue->size);
+    printf("size:%d ", queue->size);
     printf("head->");
     Node* p = queue->head->next;
     while(p != NULL)
@@ -194,6 +196,7 @@ void debugLRU(list* queue, int* recent)
 
 void debugClock(list* queue)
 {
+    printf("size:%d ", queue->size);
     printf("head->");
     if(queue->head->next == NULL) return;
     Node* p = queue->head->next->next;
@@ -238,7 +241,14 @@ int getPageFaultFIFO(int* pageRefer, int size)
         Node* tmp = findNode(queue, pageRefer[i]);
         
         #ifdef DEBUG  
-        printf("==============\n"); debugList(queue); printf("now page refer: %d\n", pageRefer[i]); 
+        printf("==============\n"); debugList(queue); printf("now page refer:\n");
+        for(int j = 0; j < size; j++)
+        {
+            if(i == j) printf("[%d] ",pageRefer[j]);    
+            else printf("%d ",pageRefer[j]);
+            
+        }
+        printf("\n");
         #endif
         
         if(tmp != NULL)
@@ -283,8 +293,8 @@ int getPageFaultOPT(int *pageRefer, int size)
         Node* tmp = findNode(queue, pageRefer[i]);
 
         #ifdef DEBUG  
-        printf("==============\n"); debugList(queue); 
-        printf("now page refer:");
+        printf("==============\n"); debugOPT(queue, forecast); 
+        printf("now page refer:\n");
 
         for(int j = 0; j < size; j++)
         {
@@ -314,6 +324,7 @@ int getPageFaultOPT(int *pageRefer, int size)
             if(queue->size >= FRAMESIZE)
             {
                 popNode(queue);
+                
             }     
             #ifdef DEBUG
             printf("miss!\n");
@@ -368,8 +379,8 @@ int getPageFaultLRU(int* pageRefer, int size)
         Node* tmp = findNode(queue, pageRefer[i]);
 
         #ifdef DEBUG  
-        printf("==============\n"); debugList(queue); 
-        printf("now page refer:");
+        printf("==============\n"); debugLRU(queue, recent); 
+        printf("now page refer:\n");
         for(int j = 0; j < size; j++)
         {
             if(i == j) printf("[%d] ",pageRefer[j]);    
@@ -437,6 +448,7 @@ void pushNodeClock(list* queue, int pageNum)
 void popNodeClock(list* queue)
 {
     if(queue->size == 0) return;
+    queue->size--;
     if(queue->size == 1) 
     {
         Node* tmp = queue->head->next;
@@ -467,7 +479,7 @@ int getPageFaultCLOCK(int* pageRefer, int size)
 
         #ifdef DEBUG  
         printf("==============\n"); debugClock(queue); 
-        printf("now page refer:");
+        printf("now page refer:\n");
         for(int j = 0; j < size; j++)
         {
             if(i == j) printf("[%d] ",pageRefer[j]);    
@@ -509,26 +521,26 @@ int main()
     int n = 20;
     int* pageRefer = (int*)malloc(n * sizeof(int));
     genRandomPageRefer(pageRefer, n);
-    // pageRefer[0] = 7;
-    // pageRefer[1] = 2;
-    // pageRefer[2] = 3;
-    // pageRefer[3] = 1;
-    // pageRefer[4] = 2;
-    // pageRefer[5] = 5;
-    // pageRefer[6] = 3;
-    // pageRefer[7] = 4;
-    // pageRefer[8] = 6;
-    // pageRefer[9] = 7;
-    // pageRefer[10] = 7;
-    // pageRefer[11] = 1;
-    // pageRefer[12] = 0;
-    // pageRefer[13] = 5;
-    // pageRefer[14] = 4;
-    // pageRefer[15] = 6;
-    // pageRefer[16] = 2;
-    // pageRefer[17] = 3;
-    // pageRefer[18] = 0;
-    // pageRefer[19] = 1;
+    pageRefer[0] = 7;
+    pageRefer[1] = 2;
+    pageRefer[2] = 3;
+    pageRefer[3] = 1;
+    pageRefer[4] = 2;
+    pageRefer[5] = 5;
+    pageRefer[6] = 3;
+    pageRefer[7] = 4;
+    pageRefer[8] = 6;
+    pageRefer[9] = 7;
+    pageRefer[10] = 7;
+    pageRefer[11] = 1;
+    pageRefer[12] = 0;
+    pageRefer[13] = 5;
+    pageRefer[14] = 4;
+    pageRefer[15] = 6;
+    pageRefer[16] = 2;
+    pageRefer[17] = 3;
+    pageRefer[18] = 0;
+    pageRefer[19] = 1;
 
 
 
@@ -543,10 +555,10 @@ int main()
 
 
 
-    printf("FIFO:  %-5d Total: %d\n", getPageFaultFIFO(pageRefer, n), n);
-    printf("OPT:   %-5d Total: %d\n", getPageFaultOPT(pageRefer,  n), n);
-    printf("LRU:   %-5d Total: %d\n", getPageFaultLRU(pageRefer,  n), n);
-    printf("CLOCK: %-5d Total: %d\n", getPageFaultCLOCK(pageRefer,  n), n);
+    printf("FIFO:  %-5d Total: %d\n\n\n", getPageFaultFIFO(pageRefer, n), n);
+    printf("OPT:   %-5d Total: %d\n\n\n", getPageFaultOPT(pageRefer,  n), n);
+    printf("LRU:   %-5d Total: %d\n\n\n", getPageFaultLRU(pageRefer,  n), n);
+    printf("CLOCK: %-5d Total: %d\n\n\n", getPageFaultCLOCK(pageRefer,  n), n);
 
     
     
