@@ -76,6 +76,26 @@ char* readFile(Block* bk, char* filename)
     return ret;
 }
 
+void readbinFile(Block* bk, char* filename, char* newName)
+{
+    int fileid;
+    get_int_by_str(bk->hashTable, filename, &fileid);
+    FILE* fpbk = bk->fp;
+    FILE* fpnf = fopen(newName, "w");
+
+    fseek(fpbk, (*bk->infos)[fileid].offset, SEEK_SET);
+    lint size = (*bk->infos)[fileid].size;
+    int i = 0;
+    while (i != size)
+    {
+        fputc(fgetc(fpbk), fpnf);
+        i++;
+    }
+    
+
+
+}
+
 void deleteBlock(Block* bk)
 {
     fclose(bk->fp);

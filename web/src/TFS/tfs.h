@@ -31,6 +31,8 @@ void writeFile(Block* bk, char* filename);
 
 char* readFile(Block* bk, char* filename);
 
+void readbinFile(Block* bk, char* filename, char* newName);
+
 void deleteBlock(Block* bk);
 
 

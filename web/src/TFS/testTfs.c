@@ -16,11 +16,17 @@ int main()
     writeFile(bk, "3.jpeg");
 
     printf("read 2 file\n");
+
     char* a = readFile(bk, "2.txt");
     printf("read file:%s\n", a);
-
+    
     char* b = readFile(bk, "1.txt");
     printf("read file:%s\n", b);
+
+    readbinFile(bk, "3.jpeg", "skadi.jpeg");
+
+
+
     printf("delete block\n");
     deleteBlock(bk);
 }
