@@ -1,30 +1,30 @@
 #ifndef _TFS_H_
 #define _TFS_H_
+#include "../jwHash/jwHash.h"
 
-#include <jwHash.h>
 
 #define MAX_FILE_NUM 10
 
-typedef long int int;
+typedef long int lint;
 
 typedef struct fileInfo
 {
-    int id;
-    int offset;
-    int size;
+    lint id;
+    lint offset;
+    lint size;
 } fileInfo;
 
 
 typedef struct Block
 {
-    int blockID;
+    lint blockID;
     char* blockName;
-    int used;
-    fileInfo* infos[MAX_FILE_NUM];
+    lint used;
+    fileInfo** infos;
     jwHashTable* hashTable;
 } Block;
 
-Block* createBlock(int id);
+Block* createBlock(lint id);
 
 void writeFile(Block* bk, char* filename);
 
