@@ -14,7 +14,7 @@ Block* createBlock(lint id)
     *newBk->infos = (fileInfo*)malloc(MAX_FILE_NUM * sizeof(fileInfo));
     newBk->blockName = (char*)malloc(5);
     newBk->blockName = "T1";
-    FILE* fp = fopen(newBk->blockName, "w");
+    newBk->fp = fopen(newBk->blockName, "w+");
     newBk->blockID = id;
     newBk->hashTable = create_hash(MAX_FILE_NUM);
     newBk->used = 0;
@@ -26,11 +26,13 @@ void writeFile(Block* bk, char* filename)
 
     lint fileid = bk->used;
     bk->used++;
+    printf("used%ld\n", bk->used);
     add_int_by_str(bk->hashTable, filename, fileid);
     (*bk->infos)[fileid].id = fileid;
     FILE* fpr = fopen(filename, "r");
-    FILE* fpw = fopen(bk->blockName, "a+");
-
+    // FILE* fpw = fopen(bk->blockName, "a+");
+    FILE* fpw = bk->fp;
+    printf("used%ld\n", bk->used);
     if(!fpr){printf("error when read file\n"); return ;}
 
     if(!fpw){printf("error when open block\n"); return ;}
@@ -45,7 +47,6 @@ void writeFile(Block* bk, char* filename)
         (*bk->infos)[fileid].offset = (*bk->infos)[fileid-1].offset + (*bk->infos)[fileid-1].size;
 
     fclose(fpr);
-    fclose(fpw);
     return ;
 }
 
@@ -55,7 +56,8 @@ char* readFile(Block* bk, char* filename)
 {
     int fileid;
     get_int_by_str(bk->hashTable, filename, &fileid);
-    FILE* fpbk = fopen(bk->blockName, "r");
+    // FILE* fpbk = fopen(bk->blockName, "r");
+    FILE* fpbk = bk->fp;
     if(!fpbk){printf("error when open block\n");return NULL;}
 
     fseek(fpbk, (*bk->infos)[fileid].offset, SEEK_SET);
@@ -70,13 +72,13 @@ char* readFile(Block* bk, char* filename)
         ret[i++] = fgetc(fpbk);
         if(i == size) break;
     }
-    // ret[size - 1] = '\0';
-    fclose(fpbk);
+    ret[size - 1] = '\0';
     return ret;
 }
 
 void deleteBlock(Block* bk)
 {
+    fclose(bk->fp);
     free(bk->hashTable);
     free(bk->infos);
     free(*bk->infos);

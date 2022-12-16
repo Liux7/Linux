@@ -18,6 +18,7 @@ typedef struct fileInfo
 typedef struct Block
 {
     lint blockID;
+    FILE* fp;
     char* blockName;
     lint used;
     fileInfo** infos;
