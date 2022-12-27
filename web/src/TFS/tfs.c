@@ -14,9 +14,9 @@ Block* createBlock(lint id)
     *newBk->infos = (fileInfo*)malloc(MAX_FILE_NUM * sizeof(fileInfo));
     newBk->blockName = (char*)malloc(5);
     newBk->blockName = "T1";
+    newBk->hashTable = create_hash(MAX_FILE_NUM);
     newBk->fp = fopen(newBk->blockName, "w+");
     newBk->blockID = id;
-    newBk->hashTable = create_hash(MAX_FILE_NUM);
     newBk->used = 0;
     return newBk;
 }
@@ -26,13 +26,13 @@ void writeFile(Block* bk, char* filename)
 
     lint fileid = bk->used;
     bk->used++;
-    printf("used%ld\n", bk->used);
+    // printf("used%ld\n", bk->used);
     add_int_by_str(bk->hashTable, filename, fileid);
     (*bk->infos)[fileid].id = fileid;
     FILE* fpr = fopen(filename, "r");
     // FILE* fpw = fopen(bk->blockName, "a+");
     FILE* fpw = bk->fp;
-    printf("used%ld\n", bk->used);
+    // printf("used%ld\n", bk->used);
     if(!fpr){printf("error when read file\n"); return ;}
 
     if(!fpw){printf("error when open block\n"); return ;}
@@ -50,12 +50,21 @@ void writeFile(Block* bk, char* filename)
     return ;
 }
 
+void deleteFile(Block* bk, char* filename)
+{
+    
+}
+
 
 
 char* readFile(Block* bk, char* filename)
 {
     int fileid;
-    get_int_by_str(bk->hashTable, filename, &fileid);
+    if(HASHNOTFOUND == get_int_by_str(bk->hashTable, filename, &fileid))
+    {
+        writeFile(bk, filename);
+        get_int_by_str(bk->hashTable, filename, &fileid);
+    }
     // FILE* fpbk = fopen(bk->blockName, "r");
     FILE* fpbk = bk->fp;
     if(!fpbk){printf("error when open block\n");return NULL;}
@@ -63,7 +72,7 @@ char* readFile(Block* bk, char* filename)
     fseek(fpbk, (*bk->infos)[fileid].offset, SEEK_SET);
 
     lint size = (*bk->infos)[fileid].size;
-    printf("offset:%ld size%ld\n", (*bk->infos)[fileid].offset, size);
+    // printf("offset:%ld size%ld\n", (*bk->infos)[fileid].offset, size);
     
     char* ret = (char*)malloc(size+5);
     int i = 0;
@@ -98,9 +107,16 @@ void readbinFile(Block* bk, char* filename, char* newName)
 
 void deleteBlock(Block* bk)
 {
+    // printf("1\n");
     fclose(bk->fp);
+    // printf("1\n");
     free(bk->hashTable);
+    // printf("1\n");
     free(bk->infos);
+    // printf("1\n");
+    // free(bk->blockName);
+    // printf("1\n");
     free(*bk->infos);
+    // printf("1\n");
     free(bk);
 }
