@@ -16,10 +16,10 @@ for i in range(0, len(z)):
  
  
 # 绘柱状图
-plt.bar(x=x, height=u, label='cpu', color='LemonChiffon', alpha=0.8)
-plt.bar(x=x, height=z, label='mt3k', color='Coral', alpha=0.8)
+# plt.bar(x=x, height=u, label='cpu', color='LemonChiffon', alpha=0.8)
+plt.bar(x=x, height=z, label='mt3k',  alpha=0.8)
 # 在左侧显示图例
-plt.legend(loc="upper left")
+plt.legend(loc="upper left")    
  
 # 设置标题
 # plt.title("Detection results")
