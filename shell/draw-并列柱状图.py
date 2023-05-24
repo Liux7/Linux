@@ -1,26 +1,43 @@
 import matplotlib.pyplot as plt
 
-fig, ax = plt.subplots()
+fig, (ax1,ax2) = plt.subplots(2,1,sharex=True)
 
 # fruits = ['apple', 'blueberry', 'cherry', 'orange','apple', 'blueberry', 'cherry', 'orange']
 # counts = [40, 100, 30, 55,40, 100, 30, 55]
 # bar_labels = ['red', 'blue', '_red', 'orange']
 
-SDGs =["Pov","Hug","CM","Ed","WP","Wat","AE","YU","Int","GINI","San","AP","CO2","PS","PL","Vio"]
+type = ["AM"," DDR"," gsm"," DDR load to AM","gsm load to AM"]
+type2 = []
+
+bandwith = [900.145721,4.875888,7.144939,33.326332,201.85799]
 
 
-v1 = [4,5,1,6,11,2,12,15,7,13,3,8,9,14,16,10]
-v2 = [5,6,2,1,12,3,10,15,7,12,4,8,9,14,16,11]
-delta = [0]*16
-for i in range(1,16,1):
-    delta[abs(v2[i]-v1[i])] = delta[abs(v2[i]-v1[i])] + 1
+
 bar_colors = ['tab:red', 'tab:blue', 'tab:red', 'tab:orange']
 
-ax.bar(SDGs, delta)#,  color=bar_colors)
+ax1.bar(type, bandwith, width=0.5)#,  color=bar_colors)
+ax2.bar(type, bandwith, width=0.5)#,  color=bar_colors)
 # ax.bar(SDGs, v1, label=SDGs)
 
-ax.set_ylabel('fruit supply')
-ax.set_title('Fruit supply by kind and color')
-ax.legend(title='Fruit color')
+
+ax1.get_xaxis().set_visible(False)
+ax1.spines['bottom'].set_visible(False)#关闭子图1中底部脊
+ax2.spines['top'].set_visible(False)##关闭子图2中顶部脊
+
+
+d = .85  #设置倾斜度
+#绘制断裂处的标记
+kwargs = dict(marker=[(-1, -d), (1, d)], markersize=15,
+              linestyle='none', color='b', mec='r', mew=1, clip_on=False)
+ax1.plot([0, 1], [0, 0],transform=ax1.transAxes, **kwargs)
+ax2.plot([0, 1], [1, 1], transform=ax2.transAxes, **kwargs)
+
+ax1.set_ylim(800, 910)
+ax2.set_ylim(0,210)
+plt.xticks(rotation=350)
+# ax.set_ylabel('fruit supply')
+# ax.set_title('Fruit supply by kind and color')
+# ax.legend(title='Fruit color')
+# plt.grid()
 
 plt.show()
